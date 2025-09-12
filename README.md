@@ -23,7 +23,7 @@ A visually stunning, modern portfolio website built with HTML, CSS, JavaScript, 
 - **Java** 🟧 `#FF7800`
 - **C#** 🟪 `#68217A`
 - **C++** 🟦 `#00599C`
-- **Python** 🔵 `#3776AB`
+- **Python** 🟦 `#3776AB`
 
 ---
 
