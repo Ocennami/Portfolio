@@ -46,7 +46,8 @@ Portfolio/
 │   └── vni-brush.ttf
 ├── picture/
 │   ├── ParkourProject.png
-│   └── PortfolioProject.png
+│   ├── PortfolioProject.png
+│   └── BlockChainGameProject.png
 └── README.md
 ```
 
