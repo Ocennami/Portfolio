@@ -17,21 +17,13 @@ A visually stunning, modern portfolio website built with HTML, CSS, JavaScript, 
 
 ## 🛠️ Technologies Used
 
-- **HTML5** ![#E34F26](https://via.placeholder.com/15/E34F26/000000?text=+)
-- **CSS3** ![#2965f1](https://via.placeholder.com/15/2965f1/000000?text=+)
-- **JavaScript** ![#f7df1e](https://via.placeholder.com/15/f7df1e/000000?text=+)
-- **Java** ![#FF7800](https://via.placeholder.com/15/FF7800/000000?text=+)
-- **C#** ![#68217A](https://via.placeholder.com/15/68217A/000000?text=+)
-- **C++** ![#00599C](https://via.placeholder.com/15/00599C/000000?text=+)
-- **Python** ![#3776AB](https://via.placeholder.com/15/3776AB/000000?text=+)
-
----
-
-## 📸 Screenshots
-
-| Home                                  | Skills                                | Projects                                |
-| ------------------------------------- | ------------------------------------- | --------------------------------------- |
-| ![Home](picture/PortfolioProject.png) | ![Skills](picture/ParkourProject.png) | ![Projects](picture/ParkourProject.png) |
+- **HTML5** 🟥 `#E34F26`
+- **CSS3** 🟦 `#2965f1`
+- **JavaScript** 🟨 `#f7df1e`
+- **Java** 🟧 `#FF7800`
+- **C#** 🟪 `#68217A`
+- **C++** 🟦 `#00599C`
+- **Python** 🔵 `#3776AB`
 
 ---
 
