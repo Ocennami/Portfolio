@@ -1,46 +1,45 @@
 // Logic ẩn preloader
-window.addEventListener('load', function () {
-  const preloader = document.getElementById('preloader');
+window.addEventListener("load", function () {
+  const preloader = document.getElementById("preloader");
 
   setTimeout(() => {
     if (preloader) {
-      preloader.classList.add('hidden');
-      document.body.style.overflow = 'auto';
+      preloader.classList.add("hidden");
+      document.body.style.overflow = "auto";
     }
   }, 2800);
 });
 
-
 // Logic hiển thị header khi cuộn trang (Giữ nguyên)
-document.addEventListener('DOMContentLoaded', function () {
-  const header = document.querySelector('.header');
-  const heroSection = document.querySelector('.home-section');
+document.addEventListener("DOMContentLoaded", function () {
+  const header = document.querySelector(".header");
+  const heroSection = document.querySelector(".home-section");
 
   if (header && heroSection) {
-    window.addEventListener('scroll', function () {
+    window.addEventListener("scroll", function () {
       const heroHeight = heroSection.offsetHeight;
       const triggerPoint = heroHeight * 0.2;
       const currentScroll = window.scrollY;
 
       if (currentScroll > triggerPoint) {
-        header.classList.add('visible');
+        header.classList.add("visible");
       } else {
-        header.classList.remove('visible');
+        header.classList.remove("visible");
       }
     });
   }
 });
 
 // ---- LOGIC HIỂN THỊ HEADER KHI SCROLL ----
-window.addEventListener('scroll', function () {
+window.addEventListener("scroll", function () {
   const heroHeight = heroSection.offsetHeight;
   const triggerPoint = heroHeight * 0.2;
   const currentScroll = window.scrollY;
 
   if (currentScroll > triggerPoint) {
-    header.classList.add('visible');
+    header.classList.add("visible");
   } else {
-    header.classList.remove('visible');
+    header.classList.remove("visible");
   }
 });
 
@@ -60,7 +59,8 @@ window.addEventListener('scroll', function () {
     baseOpacity: Math.random() * 0.5 + 0.3,
     phase: Math.random() * Math.PI * 2,
     speed: Math.random() < 0.5 ? 0 : Math.random() * 0.02,
-    hue: Math.random() < 0.7 ? 60 + Math.random() * 30 : 200 + Math.random() * 30
+    hue:
+      Math.random() < 0.7 ? 60 + Math.random() * 30 : 200 + Math.random() * 30,
   }));
 
   class Meteor {
@@ -95,7 +95,10 @@ window.addEventListener('scroll', function () {
     draw() {
       ctx.beginPath();
       ctx.moveTo(this.x, this.y);
-      ctx.lineTo(this.x - this.len * Math.cos(this.angle), this.y - this.len * Math.sin(this.angle));
+      ctx.lineTo(
+        this.x - this.len * Math.cos(this.angle),
+        this.y - this.len * Math.sin(this.angle)
+      );
       ctx.strokeStyle = `rgba(255, 255, 255, ${this.alpha})`;
       ctx.lineWidth = 2;
       ctx.stroke();
@@ -115,7 +118,7 @@ window.addEventListener('scroll', function () {
     ctx.fillRect(0, 0, c.width, c.height);
 
     // Vẽ sao
-    stars.forEach(star => {
+    stars.forEach((star) => {
       star.phase += 0.02;
       const opacity = star.baseOpacity + Math.sin(star.phase) * 0.2;
       star.y += star.speed;
@@ -128,7 +131,7 @@ window.addEventListener('scroll', function () {
     });
 
     // Vẽ sao băng
-    meteors.forEach(meteor => {
+    meteors.forEach((meteor) => {
       meteor.update();
       meteor.draw();
     });
@@ -145,33 +148,33 @@ window.addEventListener('scroll', function () {
 })();
 
 // Logic hiển thị phần tử khi cuộn trang (Fade-in effect)
-document.addEventListener('DOMContentLoaded', function () {
-  const faders = document.querySelectorAll('.fade-in-section');
+document.addEventListener("DOMContentLoaded", function () {
+  const faders = document.querySelectorAll(".fade-in-section");
 
   const appearOptions = {
-    threshold: 0.2
+    threshold: 0.2,
   };
 
   const appearOnScroll = new IntersectionObserver(function (entries, observer) {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+        entry.target.classList.add("visible");
         observer.unobserve(entry.target);
       }
     });
   }, appearOptions);
 
-  faders.forEach(fader => {
+  faders.forEach((fader) => {
     appearOnScroll.observe(fader);
   });
 });
 
 // Logic hiển thị hiệu ứng hạt trong phần Tech
 (function () {
-  const canvas = document.getElementById('particles-bg');
+  const canvas = document.getElementById("particles-bg");
   if (!canvas) return;
 
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext("2d");
 
   let width, height;
   function resizeCanvas() {
@@ -181,9 +184,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   resizeCanvas();
-  window.addEventListener('resize', resizeCanvas);
+  window.addEventListener("resize", resizeCanvas);
 
-  const colors = ['#ff4d6d', '#f9c74f', '#90be6d', '#4cc9f0', '#f72585'];
+  const colors = ["#ff4d6d", "#f9c74f", "#90be6d", "#4cc9f0", "#f72585"];
 
   const particles = Array.from({ length: 500 }, () => ({
     x: Math.random() * width,
@@ -191,18 +194,18 @@ document.addEventListener('DOMContentLoaded', function () {
     dx: (Math.random() - 0.5) * 0.4,
     dy: (Math.random() - 0.5) * 0.4,
     radius: 1 + Math.random() * 1.5,
-    color: colors[Math.floor(Math.random() * colors.length)]
+    color: colors[Math.floor(Math.random() * colors.length)],
   }));
 
   let mouse = { x: null, y: null };
 
-  canvas.addEventListener('mousemove', (e) => {
+  canvas.addEventListener("mousemove", (e) => {
     const rect = canvas.getBoundingClientRect();
     mouse.x = e.clientX - rect.left;
     mouse.y = e.clientY - rect.top;
   });
 
-  canvas.addEventListener('mouseleave', () => {
+  canvas.addEventListener("mouseleave", () => {
     mouse.x = null;
     mouse.y = null;
   });
@@ -210,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function animate() {
     ctx.clearRect(0, 0, width, height);
 
-    particles.forEach(p => {
+    particles.forEach((p) => {
       // Tính lực đẩy nếu chuột hiện diện
       if (mouse.x !== null && mouse.y !== null) {
         const dx = p.x - mouse.x;
@@ -246,73 +249,76 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Logic hiển thị hiệu ứng di chuyển chuột trong phần About
 document.addEventListener("DOMContentLoaded", function () {
-  const box = document.querySelector('.about-box');
+  const box = document.querySelector(".about-box");
   if (!box) return;
 
-  box.addEventListener('mousemove', (e) => {
+  box.addEventListener("mousemove", (e) => {
     const rect = box.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    box.style.setProperty('--x', `${x}px`);
-    box.style.setProperty('--y', `${y}px`);
+    box.style.setProperty("--x", `${x}px`);
+    box.style.setProperty("--y", `${y}px`);
 
     const edgeThresholdX = rect.width * 0.15;
     const edgeThresholdY = rect.height * 0.15;
 
     const nearEdge =
-      x < edgeThresholdX || x > rect.width - edgeThresholdX ||
-      y < edgeThresholdY || y > rect.height - edgeThresholdY;
+      x < edgeThresholdX ||
+      x > rect.width - edgeThresholdX ||
+      y < edgeThresholdY ||
+      y > rect.height - edgeThresholdY;
 
-    box.style.setProperty('--glow-opacity', nearEdge ? '1' : '0');
+    box.style.setProperty("--glow-opacity", nearEdge ? "1" : "0");
   });
 });
 
-const aboutBox = document.querySelector('.about-box');
+const aboutBox = document.querySelector(".about-box");
 
-aboutBox.addEventListener('mousemove', (e) => {
+aboutBox.addEventListener("mousemove", (e) => {
   const rect = aboutBox.getBoundingClientRect();
   const x = e.clientX - rect.left;
   const y = e.clientY - rect.top;
 
-  aboutBox.style.setProperty('--mouse-x', `${x}px`);
-  aboutBox.style.setProperty('--mouse-y', `${y}px`);
+  aboutBox.style.setProperty("--mouse-x", `${x}px`);
+  aboutBox.style.setProperty("--mouse-y", `${y}px`);
 });
 
-const box = document.querySelector('.about-box');
+const box = document.querySelector(".about-box");
 
-box.addEventListener('mousemove', (e) => {
+box.addEventListener("mousemove", (e) => {
   const rect = box.getBoundingClientRect();
   const x = e.clientX - rect.left;
   const y = e.clientY - rect.top;
 
-  box.style.setProperty('--mouse-x', `${x}px`);
-  box.style.setProperty('--mouse-y', `${y}px`);
+  box.style.setProperty("--mouse-x", `${x}px`);
+  box.style.setProperty("--mouse-y", `${y}px`);
 });
 
 // Logic hiển thị danh sách project theo skills
-const username = 'Ocennami';
-const badges = document.querySelectorAll('.skill-badge');
-const panel = document.querySelector('.skill-panel');
-const panelContent = document.getElementById('panel-content');
+const username = "Ocennami";
+const badges = document.querySelectorAll(".skill-badge");
+const panel = document.querySelector(".skill-panel");
+const panelContent = document.getElementById("panel-content");
 let reposData = [];
 
 fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
-  .then(res => res.json())
-  .then(data => {
+  .then((res) => res.json())
+  .then((data) => {
     reposData = data;
   })
-  .catch(err => console.error('Lỗi khi fetch GitHub API:', err));
+  .catch((err) => console.error("Lỗi khi fetch GitHub API:", err));
 
-badges.forEach(btn => {
-  btn.addEventListener('click', () => {
+badges.forEach((btn) => {
+  btn.addEventListener("click", () => {
     const skill = btn.dataset.skill;
 
-    if (panel.style.display === 'block' && panel.dataset.current === skill) {
+    if (panel.style.display === "block" && panel.dataset.current === skill) {
       closePanel();
     } else {
-      const filtered = reposData.filter(repo => {
-        if (repo.language) return repo.language.toLowerCase() === skill.toLowerCase();
+      const filtered = reposData.filter((repo) => {
+        if (repo.language)
+          return repo.language.toLowerCase() === skill.toLowerCase();
         return fallbackSkillMatch(repo.name, skill);
       });
 
@@ -328,71 +334,85 @@ function showPanel(skill, repos) {
   const capitalizedSkill = skill.charAt(0).toUpperCase() + skill.slice(1);
 
   const skillIconColors = {
-    JavaScript: '#f7df1e',
-    Java: '#007396',
-    'C++': '#00599C',
-    'C#': '#68217A',
-    CSS: '#2965f1',
-    HTML: '#E34F26'
+    JavaScript: "#f7df1e",
+    Java: "#FF7800",
+    "C++": "#00599C",
+    "C#": "#68217A",
+    CSS: "#2965f1",
+    HTML: "#E34F26",
+    Python: "#3776AB",
   };
 
   // Cải thiện cấu trúc HTML để dễ dàng tạo kiểu
   panelContent.innerHTML = `
     <div class="panel-header-new">
-      <span class="language-icon" style="background-color: ${skillIconColors[capitalizedSkill] || '#fff'};"></span>
+      <span class="language-icon" style="background-color: ${
+        skillIconColors[capitalizedSkill] || "#fff"
+      };"></span>
       <div class="language-info">
         <h3 class="language-title">${capitalizedSkill}</h3>
         <span class="language-tag">Programming Language</span>
       </div>
     </div>
     
-    <p class="projects-count">Projects using ${capitalizedSkill} (${repos.length})</p>
+    <p class="projects-count">Projects using ${capitalizedSkill} (${
+    repos.length
+  })</p>
     
     <div class="card-grid-new">
-      ${repos.map(repo => {
-        // Định dạng lại ngôn ngữ để hiển thị trên badge
-        const repoLanguage = repo.language || 'Unknown';
-        
-        return `
+      ${repos
+        .map((repo) => {
+          // Định dạng lại ngôn ngữ để hiển thị trên badge
+          const repoLanguage = repo.language || "Unknown";
+
+          return `
         <div class="project-card-new" data-url="${repo.html_url}">
           <div class="card-header-new">
             <h4 class="card-title-new">${repo.name}</h4>
             <i class="fab fa-github github-link"></i>
           </div>
-          <p class="card-description-new">${repo.description || 'No description provided.'}</p>
+          <p class="card-description-new">${
+            repo.description || "No description provided."
+          }</p>
           <div class="card-footer-new">
             <span class="card-language-badge-new">
-              <span class="dot" style="color: ${skillIconColors[repoLanguage] || '#ccc'};">●</span>
+              <span class="dot" style="color: ${
+                skillIconColors[repoLanguage] || "#ccc"
+              };">●</span>
               ${repoLanguage}
             </span>
-            <small class="card-date-new">Updated: ${new Date(repo.updated_at).toLocaleDateString()}</small>
+            <small class="card-date-new">Updated: ${new Date(
+              repo.updated_at
+            ).toLocaleDateString()}</small>
           </div>
         </div>
-      `}).join('')}
+      `;
+        })
+        .join("")}
     </div>
   `;
-  
-  panel.style.display = 'block';
-  
-  const projectCards = panel.querySelectorAll('.project-card-new');
-  projectCards.forEach(card => {
-    card.addEventListener('click', function(e) {
-      if (!e.target.matches('a')) {
+
+  panel.style.display = "block";
+
+  const projectCards = panel.querySelectorAll(".project-card-new");
+  projectCards.forEach((card) => {
+    card.addEventListener("click", function (e) {
+      if (!e.target.matches("a")) {
         const url = this.dataset.url;
-        window.open(url, '_blank');
+        window.open(url, "_blank");
       }
     });
   });
 }
 
 function closePanel() {
-  panel.style.display = 'none';
-  panel.dataset.current = '';
+  panel.style.display = "none";
+  panel.dataset.current = "";
 }
 
 function fallbackSkillMatch(repoName, skill) {
   const map = {
-    Java: ['Parkour'],
+    Java: ["Parkour"],
     // thêm repo nếu GitHub API không nhận diện đúng ngôn ngữ
   };
   return map[skill]?.includes(repoName) || false;
@@ -400,15 +420,15 @@ function fallbackSkillMatch(repoName, skill) {
 
 // Logic hiển thị hiệu ứng di chuyển chuột trong phần Contact
 document.addEventListener("DOMContentLoaded", function () {
-  const contactBox = document.querySelector('.contact-box');
+  const contactBox = document.querySelector(".contact-box");
   if (!contactBox) return;
 
-  contactBox.addEventListener('mousemove', (e) => {
+  contactBox.addEventListener("mousemove", (e) => {
     const rect = contactBox.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    contactBox.style.setProperty('--mouse-x', `${x}px`);
-    contactBox.style.setProperty('--mouse-y', `${y}px`);
+    contactBox.style.setProperty("--mouse-x", `${x}px`);
+    contactBox.style.setProperty("--mouse-y", `${y}px`);
   });
 });
