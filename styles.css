@@ -54,14 +54,17 @@
   left: 0;
   width: 35px;
   height: 35px;
-  background: #888;
+  background: rgba(255, 255, 255, 0.04);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1.1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.04);
 }
+
 #mouse-follower::after {
   content: "";
   width: 10px;

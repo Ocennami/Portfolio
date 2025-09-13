@@ -1,3 +1,26 @@
+// Magnifier Glass Effect
+const magnifier = document.getElementById("magnifier");
+let magX = 0,
+  magY = 0;
+
+document.addEventListener("mousemove", (e) => {
+  magX = e.clientX - 40;
+  magY = e.clientY - 40;
+  magnifier.style.transform = `translate(${magX}px, ${magY}px)`;
+
+  // Lấy background của body
+  const bodyStyles = window.getComputedStyle(document.body);
+  const bg = bodyStyles.backgroundImage || bodyStyles.backgroundColor;
+  // Lấy vị trí scroll
+  const scrollX = window.scrollX;
+  const scrollY = window.scrollY;
+
+  // Tính vị trí background cho hiệu ứng phóng đại
+  magnifier.style.background = bg;
+  magnifier.style.backgroundPosition = `${-magX + 40 + scrollX}px ${
+    -magY + 40 + scrollY
+  }px`;
+});
 // Logic ẩn preloader
 window.addEventListener("load", function () {
   const preloader = document.getElementById("preloader");
