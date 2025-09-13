@@ -48,6 +48,29 @@
   visibility: hidden;
 }
 
+#mouse-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 35px;
+  height: 35px;
+  background: #888;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#mouse-follower::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+  display: block;
+}
+
 .custom-loader-content {
   text-align: center;
   color: white;

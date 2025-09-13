@@ -247,6 +247,26 @@ document.addEventListener("DOMContentLoaded", function () {
   animate();
 })();
 
+// Mouse follower animation
+const follower = document.getElementById("mouse-follower");
+let mouseX = 0,
+  mouseY = 0;
+let currentX = 0,
+  currentY = 0;
+
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX - 20;
+  mouseY = e.clientY - 20;
+});
+
+function animateFollower() {
+  currentX += (mouseX - currentX) * 0.15;
+  currentY += (mouseY - currentY) * 0.15;
+  follower.style.transform = `translate(${currentX}px, ${currentY}px)`;
+  requestAnimationFrame(animateFollower);
+}
+animateFollower();
+
 // Logic hiển thị hiệu ứng di chuyển chuột trong phần About
 document.addEventListener("DOMContentLoaded", function () {
   const box = document.querySelector(".about-box");
