@@ -424,7 +424,7 @@ function showPanel(skill, repos) {
               };">●</span>
               ${repoLanguage}
             </span>
-            <small class="card-date-new">Updated: ${new Date(
+            <small class="card-date-new">Last Updated: ${new Date(
               repo.updated_at
             ).toLocaleDateString()}</small>
           </div>
