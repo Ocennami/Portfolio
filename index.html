@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -331,6 +331,28 @@
             <a href="#projects">Projects</a>
         </div>
     </footer>
+    <aside class="music-player" aria-label="Music player">
+        <img class="player-cover" src="picture/NẾU MỘT NGÀY CHÚNG TA KHÔNG CÒN GẶP.jpg" alt="Album art">
+        <div class="player-meta">
+            <span class="player-title">Nếu một ngày chúng ta không còn gặp</span>
+            <span class="player-artist">2CAN</span>
+        </div>
+        <div class="player-controls">
+            <button type="button" class="player-btn" data-action="prev" aria-label="Previous track">
+                <i class="fas fa-backward"></i>
+            </button>
+            <button type="button" class="player-btn player-toggle" data-action="toggle" aria-label="Play or pause">
+                <i class="fas fa-play"></i>
+            </button>
+            <button type="button" class="player-btn" data-action="next" aria-label="Next track">
+                <i class="fas fa-forward"></i>
+            </button>
+            <a class="player-btn player-link" href="#" target="_blank" rel="noopener" aria-label="Open track">
+                <i class="fas fa-up-right-from-square"></i>
+            </a>
+        </div>
+        <audio class="player-audio" preload="metadata"></audio>
+    </aside>
     <script src="script.js"></script>
 </body>
 

@@ -1,4 +1,4 @@
-// Magnifier Glass Effect
+﻿// Magnifier Glass Effect
 const magnifier = document.getElementById("magnifier");
 let magX = 0,
   magY = 0;
@@ -474,4 +474,246 @@ document.addEventListener("DOMContentLoaded", function () {
     contactBox.style.setProperty("--mouse-x", `${x}px`);
     contactBox.style.setProperty("--mouse-y", `${y}px`);
   });
+});
+
+// Music Player Functionality
+document.addEventListener("DOMContentLoaded", function () {
+  const musicPlayer = document.querySelector(".music-player");
+  const audio = musicPlayer.querySelector(".player-audio");
+  const playBtn = musicPlayer.querySelector('[data-action="toggle"]');
+  const prevBtn = musicPlayer.querySelector('[data-action="prev"]');
+  const nextBtn = musicPlayer.querySelector('[data-action="next"]');
+  const coverImg = musicPlayer.querySelector(".player-cover");
+  const titleElement = musicPlayer.querySelector(".player-title");
+  const artistElement = musicPlayer.querySelector(".player-artist");
+  const linkBtn = musicPlayer.querySelector(".player-link");
+
+  // Playlist với file MP3 thực
+  const playlist = [
+    {
+      title: "Nếu một ngày chúng ta không còn gặp",
+      artist: "2CAN",
+      cover: "picture/NẾU MỘT NGÀY CHÚNG TA KHÔNG CÒN GẶP.jpg",
+      src: "music/NẾU MỘT NGÀY CHÚNG TA KHÔNG CÒN GẶP (ft. 2CAN).mp3",
+      link: "https://open.spotify.com/track/5BsnY4AATNyLE3OWUqHLQg?si=4a2c8b4d59414f51",
+    },
+    {
+      title: "Điều chưa nói",
+      artist: "Tứa ft. CM1X",
+      cover: "picture/Điều Chưa Nói - Tùa ft. CM1X - TÙA.png",
+      src: "music/Điều Chưa Nói - Tùa ft. CM1X - TÙA.mp3",
+      link: "https://open.spotify.com/track/5hzjqKMQPampmtM6eObybz?si=0c869d7ff79a4f8b",
+    },
+    {
+      title: "Ai Đưa Em Về",
+      artist: "1nG x VoVanDuc",
+      cover: "picture/Ai Đưa Em Về - 1nG x VoVanDuc.jpg",
+      src: "music/Ai Đưa Em Về - 1nG x VoVanDuc.mp3",
+      link: "https://open.spotify.com/track/6GICR3XCKLGs1llkGTo17f?si=d2ad0316221046ab",
+    },
+  ];
+
+  let currentTrackIndex = 0;
+  let isPlaying = false;
+
+  // Load track
+  function loadTrack(index) {
+    const track = playlist[index];
+    if (!track) return;
+
+    titleElement.textContent = track.title;
+    artistElement.textContent = track.artist;
+    coverImg.src = track.cover;
+    coverImg.alt = `${track.title} album art`;
+    audio.src = track.src;
+
+    // Update link button
+    if (track.link) {
+      linkBtn.href = track.link;
+      linkBtn.classList.remove("is-disabled");
+    } else {
+      linkBtn.href = "#";
+      linkBtn.classList.add("is-disabled");
+    }
+
+    // Reset play button
+    updatePlayButton(false);
+    musicPlayer.classList.remove("playing");
+  }
+
+  // Update play button icon
+  function updatePlayButton(playing) {
+    const icon = playBtn.querySelector("i");
+    icon.className = playing ? "fas fa-pause" : "fas fa-play";
+    isPlaying = playing;
+  }
+
+  // Play/Pause functionality
+  function togglePlayPause() {
+    if (audio.src === "" || !audio.src.includes(".mp3")) {
+      loadTrack(currentTrackIndex);
+      setTimeout(() => togglePlayPause(), 100);
+      return;
+    }
+
+    if (isPlaying) {
+      audio.pause();
+      updatePlayButton(false);
+      musicPlayer.classList.remove("playing");
+    } else {
+      // Check if audio can play
+      if (audio.readyState >= 2) {
+        // HAVE_CURRENT_DATA
+        playAudio();
+      } else {
+        // If not ready, try to load and play
+        audio.load();
+        audio.addEventListener("canplaythrough", playAudio, { once: true });
+        audio.addEventListener("error", handleAudioError, { once: true });
+      }
+    }
+  }
+
+  // Separate play function with error handling
+  function playAudio() {
+    audio
+      .play()
+      .then(() => {
+        updatePlayButton(true);
+        musicPlayer.classList.add("playing");
+        showNotification(`Đang phát: ${playlist[currentTrackIndex].title}`);
+      })
+      .catch((error) => {
+        console.error("Error playing audio:", error);
+        showNotification(
+          "This file cannot be played. Check the MP3 file path."
+        );
+        handleAudioError();
+      });
+  }
+
+  // Handle audio errors
+  function handleAudioError() {
+    updatePlayButton(false);
+    musicPlayer.classList.remove("playing");
+    showNotification(
+      `Error: File not found ${playlist[currentTrackIndex].src}`
+    );
+  }
+
+  // Previous track
+  function previousTrack() {
+    currentTrackIndex =
+      currentTrackIndex > 0 ? currentTrackIndex - 1 : playlist.length - 1;
+    loadTrack(currentTrackIndex);
+    if (isPlaying) {
+      setTimeout(() => togglePlayPause(), 100);
+    }
+  }
+
+  // Next track
+  function nextTrack() {
+    currentTrackIndex =
+      currentTrackIndex < playlist.length - 1 ? currentTrackIndex + 1 : 0;
+    loadTrack(currentTrackIndex);
+    if (isPlaying) {
+      setTimeout(() => togglePlayPause(), 100);
+    }
+  }
+
+  // Show notification
+  function showNotification(message) {
+    const notification = document.createElement("div");
+    notification.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            z-index: 10000;
+            font-size: 14px;
+            backdrop-filter: blur(10px);
+        `;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+      notification.remove();
+    }, 3000);
+  }
+
+  // Event listeners
+  playBtn.addEventListener("click", togglePlayPause);
+  prevBtn.addEventListener("click", previousTrack);
+  nextBtn.addEventListener("click", nextTrack);
+
+  // Audio events
+  audio.addEventListener("ended", () => {
+    nextTrack(); // Auto play next track
+  });
+
+  audio.addEventListener("pause", () => {
+    updatePlayButton(false);
+    musicPlayer.classList.remove("playing");
+  });
+
+  audio.addEventListener("play", () => {
+    updatePlayButton(true);
+    musicPlayer.classList.add("playing");
+  });
+
+  audio.addEventListener("error", (e) => {
+    console.error("Audio error:", e);
+    updatePlayButton(false);
+    musicPlayer.classList.remove("playing");
+    showNotification("Error loading music. Go to next song.");
+    setTimeout(() => nextTrack(), 1000);
+  });
+
+  // Load first track on init
+  loadTrack(currentTrackIndex);
+
+  // Keyboard controls (optional)
+  document.addEventListener("keydown", (e) => {
+    // Only work if no input is focused
+    if (
+      document.activeElement.tagName === "INPUT" ||
+      document.activeElement.tagName === "TEXTAREA"
+    ) {
+      return;
+    }
+
+    switch (e.key) {
+      case " ": // Spacebar
+        e.preventDefault();
+        togglePlayPause();
+        break;
+      case "ArrowLeft":
+        e.preventDefault();
+        previousTrack();
+        break;
+      case "ArrowRight":
+        e.preventDefault();
+        nextTrack();
+        break;
+    }
+  });
+
+  // Volume control (if you want to add volume slider later)
+  function setVolume(volume) {
+    audio.volume = Math.max(0, Math.min(1, volume));
+  }
+
+  // Expose some functions globally if needed
+  window.musicPlayer = {
+    play: () => togglePlayPause(),
+    pause: () => togglePlayPause(),
+    next: nextTrack,
+    prev: previousTrack,
+    setVolume: setVolume,
+    getCurrentTrack: () => playlist[currentTrackIndex],
+    isPlaying: () => isPlaying,
+  };
 });
