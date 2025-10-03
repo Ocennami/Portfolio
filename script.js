@@ -263,7 +263,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else if (width < 250) {
       particleCount = 500; // Màn hình nhỏ (200px) - tăng từ 300 lên 500
     }
-    
+
     particles = Array.from({ length: particleCount }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
