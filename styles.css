@@ -65,6 +65,13 @@
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.04);
 }
 
+/* Hide mouse follower on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  #mouse-follower {
+    display: none !important;
+  }
+}
+
 #mouse-follower::after {
   content: "";
   width: 10px;
@@ -140,7 +147,6 @@
   max-width: 900px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transform: translateX(-50%);
@@ -170,6 +176,14 @@
   font-size: 18px;
   font-weight: 600;
   text-decoration: none;
+  position: absolute;
+  left: 24px;
+}
+
+.nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .nav-menu {
@@ -196,32 +210,118 @@
   border-bottom: 2px solid rgba(142, 68, 173, 0.8);
 }
 
-.right-section {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.user-icon {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 2px 10px;
-  border-radius: 50px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 50px;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
+  background: transparent;
+  border: none;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  padding: 0;
+  z-index: 1001;
+  position: absolute;
+  right: 24px;
 }
 
-.user-icon:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 15px rgba(142, 68, 173, 0.8), 0 0 25px rgba(142, 68, 173, 0.6);
-  transform: translateY(-2px);
+.hamburger-line {
+  width: 100%;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Mobile Menu Responsive */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    width: 90%;
+    max-width: 400px;
+    background: rgba(30, 27, 46, 0.98);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+  }
+
+  .nav.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 0;
+    gap: 0;
+  }
+
+  .nav-menu li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-link {
+    display: block;
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 16px;
+    border-bottom: none;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    background: rgba(142, 68, 173, 0.2);
+    border-left: 3px solid rgba(142, 68, 173, 0.8);
+    border-bottom: none;
+  }
+
+  .header {
+    padding: 12px 20px;
+    justify-content: space-between;
+  }
+
+  .logo {
+    position: static;
+  }
+
+  .nav {
+    position: fixed;
+    flex: none;
+  }
+
+  .hamburger {
+    position: static;
+  }
 }
 
 html {
@@ -1589,9 +1689,45 @@ html {
   width: 58px;
   height: 58px;
   border-radius: 50%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
+  background: rgba(0, 0, 0, 0.3);
   border: 2px solid rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, width 0.3s ease,
+    height 0.3s ease;
+  position: relative;
+  flex-shrink: 0;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Spinning animation for album cover */
+@keyframes spin-record {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Pulsing glow animation */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 8px 24px rgba(236, 72, 153, 0.5),
+      0 0 30px rgba(139, 92, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 8px 30px rgba(236, 72, 153, 0.7),
+      0 0 40px rgba(139, 92, 246, 0.5);
+  }
+}
+
+.music-player.playing .player-cover {
+  animation: spin-record 3s linear infinite, pulse-glow 2s ease-in-out infinite;
+  border-color: rgba(236, 72, 153, 0.8);
 }
 
 .player-meta {
@@ -1638,6 +1774,9 @@ html {
   cursor: pointer;
   transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
 }
 
 .player-btn i {
@@ -1658,16 +1797,35 @@ html {
   width: 44px;
   height: 44px;
   background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
 }
 
 .music-player.playing .player-toggle {
   background: linear-gradient(135deg, #22d3ee 0%, #38bdf8 100%);
+  box-shadow: 0 4px 15px rgba(34, 211, 238, 0.4);
 }
 
 .music-player.playing {
   box-shadow: 0 26px 55px rgba(14, 165, 233, 0.35);
+  border-color: rgba(34, 211, 238, 0.2);
 }
 
+.music-player.playing::after {
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(34, 211, 238, 0.2),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(56, 189, 248, 0.15),
+      transparent 50%
+    );
+}
+
+/* Tablet responsive */
 @media (max-width: 768px) {
   .music-player {
     position: fixed;
@@ -1675,30 +1833,92 @@ html {
     right: 16px;
     bottom: 20px;
     min-width: unset;
-    padding: 12px 18px;
+    max-width: unset;
+    padding: 12px 20px;
     gap: 14px;
+    z-index: 900; /* Giảm để không che menu */
   }
 
   .player-meta {
-    display: none;
+    display: none; /* Ẩn metadata để tiết kiệm không gian */
   }
-}
 
-@media (max-width: 480px) {
-  .music-player {
-    bottom: 16px;
-    padding: 10px 16px;
-    gap: 12px;
+  .player-cover {
+    width: 52px;
+    height: 52px;
   }
 
   .player-btn {
-    width: 34px;
-    height: 34px;
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
   }
 
   .player-toggle {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
+    font-size: 16px;
+  }
+}
+
+/* Mobile small screens */
+@media (max-width: 480px) {
+  .music-player {
+    bottom: 16px;
+    left: 12px;
+    right: 12px;
+    padding: 10px 16px;
+    gap: 10px;
+  }
+
+  .player-cover {
+    width: 48px;
+    height: 48px;
+  }
+
+  .player-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 13px;
+  }
+
+  .player-toggle {
+    width: 44px;
+    height: 44px;
+    font-size: 15px;
+  }
+
+  .player-btn i,
+  .player-toggle i {
+    font-size: inherit;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+  .music-player {
+    bottom: 12px;
+    left: 8px;
+    right: 8px;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .player-cover {
+    width: 44px;
+    height: 44px;
+  }
+
+  .player-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+  }
+
+  .player-toggle {
+    width: 42px;
+    height: 42px;
+    font-size: 14px;
   }
 }
 .player-link.is-disabled {

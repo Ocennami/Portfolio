@@ -51,6 +51,57 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+  // Hamburger Menu Toggle Logic
+  const hamburger = document.querySelector(".hamburger");
+  const nav = document.querySelector(".nav");
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  if (hamburger && nav) {
+    // Toggle menu when hamburger is clicked
+    hamburger.addEventListener("click", function () {
+      hamburger.classList.toggle("active");
+      nav.classList.toggle("active");
+
+      // Update aria-expanded for accessibility
+      const isExpanded = hamburger.classList.contains("active");
+      hamburger.setAttribute("aria-expanded", isExpanded);
+
+      // Prevent body scroll when menu is open
+      if (isExpanded) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
+    });
+
+    // Close menu when a nav link is clicked
+    navLinks.forEach((link) => {
+      link.addEventListener("click", function () {
+        hamburger.classList.remove("active");
+        nav.classList.remove("active");
+        hamburger.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "auto";
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", function (event) {
+      const isClickInsideNav = nav.contains(event.target);
+      const isClickOnHamburger = hamburger.contains(event.target);
+
+      if (
+        !isClickInsideNav &&
+        !isClickOnHamburger &&
+        nav.classList.contains("active")
+      ) {
+        hamburger.classList.remove("active");
+        nav.classList.remove("active");
+        hamburger.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "auto";
+      }
+    });
+  }
 });
 
 // ---- LOGIC HIỂN THỊ HEADER KHI SCROLL ----
@@ -500,7 +551,7 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       title: "Điều chưa nói",
       artist: "Tứa ft. CM1X",
-      cover: "picture/Điều Chưa Nói - Tùa ft. CM1X - TÙA.png",
+      cover: "picture/Điều Chưa Nói - Tùa ft. CM1X - TÙA.jpg",
       src: "music/Điều Chưa Nói - Tùa ft. CM1X - TÙA.mp3",
       link: "https://open.spotify.com/track/5hzjqKMQPampmtM6eObybz?si=0c869d7ff79a4f8b",
     },
