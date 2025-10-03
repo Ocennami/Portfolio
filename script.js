@@ -256,7 +256,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const colors = ["#ff4d6d", "#f9c74f", "#90be6d", "#4cc9f0", "#f72585"];
 
   function createParticles() {
-    particles = Array.from({ length: 500 }, () => ({
+    // Điều chỉnh số lượng particles dựa trên kích thước - Tăng lên nhiều hơn
+    let particleCount = 600;
+    if (width < 200) {
+      particleCount = 400; // Màn hình rất nhỏ (150px) - tăng từ 200 lên 400
+    } else if (width < 250) {
+      particleCount = 500; // Màn hình nhỏ (200px) - tăng từ 300 lên 500
+    }
+    
+    particles = Array.from({ length: particleCount }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
       dx: (Math.random() - 0.5) * 0.4,

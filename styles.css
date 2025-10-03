@@ -526,9 +526,18 @@ section {
     right: auto;
     top: auto;
     transform: none;
-    margin-top: 40px;
+    margin: 40px auto 0 auto; /* Căn giữa bằng margin auto */
     width: 200px;
     height: 200px;
+    border: 2px solid rgba(255, 20, 100, 0.4);
+    display: block; /* Đảm bảo là block element để margin auto hoạt động */
+    /* Scale down clip-path for smaller size */
+    clip-path: path(
+      "M100,175 C39,125 0,94 0,56 C0,25 25,0 56,0 C75,0 100,25 100,44 C100,25 125,0 144,0 C175,0 200,25 200,56 C200,94 161,125 100,175 Z"
+    );
+    -webkit-clip-path: path(
+      "M100,175 C39,125 0,94 0,56 C0,25 25,0 56,0 C75,0 100,25 100,44 C100,25 125,0 144,0 C175,0 200,25 200,56 C200,94 161,125 100,175 Z"
+    );
   }
 }
 
@@ -553,7 +562,14 @@ section {
   .tech-particles {
     width: 150px;
     height: 150px;
-    margin-top: 30px;
+    margin: 30px auto 0 auto; /* Căn giữa với margin auto */
+    /* Scale down clip-path for smaller size */
+    clip-path: path(
+      "M75,131 C29,94 0,70 0,42 C0,19 19,0 42,0 C56,0 75,19 75,33 C75,19 94,0 108,0 C131,0 150,19 150,42 C150,70 121,94 75,131 Z"
+    );
+    -webkit-clip-path: path(
+      "M75,131 C29,94 0,70 0,42 C0,19 19,0 42,0 C56,0 75,19 75,33 C75,19 94,0 108,0 C131,0 150,19 150,42 C150,70 121,94 75,131 Z"
+    );
   }
 }
 
