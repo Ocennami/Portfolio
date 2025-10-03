@@ -251,25 +251,40 @@ document.addEventListener("DOMContentLoaded", function () {
   const ctx = canvas.getContext("2d");
 
   let width, height;
+  let particles = [];
+
+  const colors = ["#ff4d6d", "#f9c74f", "#90be6d", "#4cc9f0", "#f72585"];
+
+  function createParticles() {
+    particles = Array.from({ length: 500 }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      dx: (Math.random() - 0.5) * 0.4,
+      dy: (Math.random() - 0.5) * 0.4,
+      radius: 1 + Math.random() * 1.5,
+      color: colors[Math.floor(Math.random() * colors.length)],
+    }));
+  }
+
   function resizeCanvas() {
-    const rect = canvas.parentElement.getBoundingClientRect();
-    width = canvas.width = rect.width;
-    height = canvas.height = rect.height;
+    const rect = canvas.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+
+    width = rect.width;
+    height = rect.height;
+
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
+
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.scale(dpr, dpr);
+
+    createParticles();
   }
 
   resizeCanvas();
   window.addEventListener("resize", resizeCanvas);
-
-  const colors = ["#ff4d6d", "#f9c74f", "#90be6d", "#4cc9f0", "#f72585"];
-
-  const particles = Array.from({ length: 500 }, () => ({
-    x: Math.random() * width,
-    y: Math.random() * height,
-    dx: (Math.random() - 0.5) * 0.4,
-    dy: (Math.random() - 0.5) * 0.4,
-    radius: 1 + Math.random() * 1.5,
-    color: colors[Math.floor(Math.random() * colors.length)],
-  }));
 
   let mouse = { x: null, y: null };
 
