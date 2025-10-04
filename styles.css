@@ -379,7 +379,7 @@ section {
 .hero-content {
   max-width: 600px;
   z-index: 2;
-  padding-left: 40px;
+  padding-left: 0px;
   margin-left: 0;
 }
 
@@ -583,7 +583,7 @@ section {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 150px 80px 80px 80px;
+  padding: 150px 60px 80px 60px;
   position: relative;
 }
 
@@ -693,7 +693,7 @@ section {
 }
 
 .about-section {
-  padding: 80px 40px;
+  padding: 80px 45px;
   max-width: 1400px;
   margin: 0 auto;
   color: white;
@@ -1542,7 +1542,7 @@ section {
 
 .experiences-section {
   padding: 80px 60px;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   color: white;
 }
@@ -1567,6 +1567,159 @@ section {
   line-height: 1.6;
 }
 
+/* Timeline Styles */
+.timeline {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    rgba(212, 166, 249, 0.3) 0%,
+    rgba(124, 58, 237, 0.5) 50%,
+    rgba(212, 166, 249, 0.3) 100%
+  );
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 80px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.timeline-item:nth-child(odd) {
+  justify-content: flex-start;
+}
+
+.timeline-item:nth-child(even) {
+  justify-content: flex-end;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+  text-align: left;
+  margin-left: calc(50% + 40px);
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+  text-align: left;
+  margin-right: calc(50% + 40px);
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #d4a6f9 0%, #7c3aed 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(28, 28, 35, 1), 0 0 15px rgba(212, 166, 249, 0.4);
+  z-index: 10;
+}
+
+.timeline-content {
+  background: rgba(40, 40, 47, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 35px 45px;
+  width: 100%;
+  max-width: 800px;
+  min-width: 610px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 166, 249, 0.05) 0%,
+    rgba(124, 58, 237, 0.05) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.timeline-content:hover {
+  border-color: rgba(212, 166, 249, 0.4);
+  box-shadow: 0 10px 30px rgba(212, 166, 249, 0.2);
+}
+
+.timeline-content:hover::before {
+  opacity: 1;
+}
+
+.timeline-content h3 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.timeline-date {
+  font-size: 14px;
+  color: #d4a6f9;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.timeline-desc {
+  font-size: 16px;
+  color: #ccc;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive Timeline */
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item,
+  .timeline-item:nth-child(odd) {
+    flex-direction: row;
+  }
+
+  .timeline-item:nth-child(odd) .timeline-content,
+  .timeline-item:nth-child(even) .timeline-content {
+    text-align: left;
+    padding-left: 60px;
+    padding-right: 20px;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .timeline-dot {
+    left: 20px;
+    transform: translateX(-50%);
+  }
+
+  .timeline-item:hover .timeline-dot {
+    transform: translateX(-50%) scale(1.3);
+  }
+}
+
 .tagcontact {
   color: #d4a6f9;
   padding: 5px 30px;
@@ -1578,8 +1731,8 @@ section {
 }
 
 .contact-section {
-  padding: 80px 60px;
-  max-width: 900px;
+  padding: 80px 45px;
+  max-width: 1400px;
   margin: 0 auto;
   color: white;
 }
@@ -1600,15 +1753,15 @@ section {
 
 .contact-box {
   position: relative;
-  padding: 30px 40px;
-  border-radius: 16px;
+  padding: 50px 45px;
+  border-radius: 20px;
   background: rgba(28, 28, 35, 0.95);
   color: #e5e7eb;
   overflow: hidden;
   z-index: 0;
-  max-width: 500px;
   display: flex;
   flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .contact-box:hover {
@@ -1661,9 +1814,31 @@ section {
 }
 
 .contact-box .contact-info i {
-  margin-right: 12px;
-  width: 20px;
-  text-align: center;
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.2),
+    rgba(236, 72, 153, 0.2)
+  );
+  border-radius: 12px;
+  margin-right: 16px;
+  font-size: 20px;
+  flex-shrink: 0;
+  color: #ec4899;
+  transition: all 0.3s ease;
+}
+
+.contact-box .contact-info:hover i {
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.3),
+    rgba(236, 72, 153, 0.3)
+  );
+  transform: scale(1.05);
 }
 .online-dot-wrapper {
   display: inline-block;
@@ -1783,34 +1958,71 @@ textarea {
 }
 
 .contact-info {
-  margin-top: 15px;
-  color: #fff;
+  margin-bottom: 12px;
+  color: #e5e7eb;
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  transition: all 0.3s ease;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.contact-info:hover {
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .contact-info strong {
-  color: #555;
+  color: #a0aec0;
+  font-size: 13px;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.contact-info > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-info > div span {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  word-break: break-all;
 }
 
 .contact-status {
-  margin-top: auto;
+  margin-top: 20px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   color: #fff;
 }
 
 .contact-status strong {
   color: #fff;
+  font-size: 16px;
+  display: block;
+  margin-bottom: 12px;
 }
 
 .available-contact {
   display: inline-block;
   margin-top: 8px;
   color: #22c55e;
-  font-weight: bold;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
 .online-dot {
   color: #22c55e;
-  margin-right: 6px;
+  font-size: 12px;
+  margin-right: 8px;
   animation: blink 2s infinite ease-in-out;
+  vertical-align: middle;
 }
 
 @keyframes blink {
