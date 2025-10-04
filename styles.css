@@ -372,14 +372,15 @@ section {
   position: relative;
   display: flex;
   align-items: center;
-  padding: 0 50px;
+  padding: 0;
   overflow: hidden;
 }
 
 .hero-content {
   max-width: 600px;
   z-index: 2;
-  padding-left: 80px;
+  padding-left: 40px;
+  margin-left: 0;
 }
 
 .tag {
@@ -1753,21 +1754,27 @@ textarea {
 
   .about-content {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 40px;
+    display: flex;
+    flex-direction: column;
   }
 
   .about-image-wrapper {
     max-width: 100%;
+    width: 100%;
     margin: 0 auto;
+    order: 1;
+  }
+
+  .about-box {
+    padding: 30px;
+    order: 2;
+    margin-top: 20px;
   }
 
   .about-section {
     padding: 60px 20px;
     margin-bottom: 150px;
-  }
-
-  .about-box {
-    padding: 30px;
   }
 
   .about-title {
