@@ -16,7 +16,7 @@
 
 ## 👨‍💻 About Me
 
-I'm **Đặng Tuấn Hùng (Oceanami)**, a passionate developer from Vietnam 🇻🇳. I love creating beautiful and interactive web experiences.
+I'm **Đặng Tuấn Hùng (Oceanami)**, a passionate developer from Vietnam 🇻🇳. I build things for fun.
 
 ### 🤝 Connect with Me
 
