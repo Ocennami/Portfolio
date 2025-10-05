@@ -8,20 +8,20 @@ document.addEventListener("mousemove", (e) => {
   magY = e.clientY - 40;
   magnifier.style.transform = `translate(${magX}px, ${magY}px)`;
 
-  // Lấy background của body
+  // get the background of the body
   const bodyStyles = window.getComputedStyle(document.body);
   const bg = bodyStyles.backgroundImage || bodyStyles.backgroundColor;
-  // Lấy vị trí scroll
+  // get scroll position
   const scrollX = window.scrollX;
   const scrollY = window.scrollY;
 
-  // Tính vị trí background cho hiệu ứng phóng đại
+  // calculate background position for magnification effect
   magnifier.style.background = bg;
   magnifier.style.backgroundPosition = `${-magX + 40 + scrollX}px ${
     -magY + 40 + scrollY
   }px`;
 });
-// Logic ẩn preloader
+// logic hide preloader
 window.addEventListener("load", function () {
   const preloader = document.getElementById("preloader");
 
@@ -33,7 +33,6 @@ window.addEventListener("load", function () {
   }, 2800);
 });
 
-// Logic hiển thị header khi cuộn trang (Giữ nguyên)
 document.addEventListener("DOMContentLoaded", function () {
   const header = document.querySelector(".header");
   const heroSection = document.querySelector(".home-section");
@@ -58,16 +57,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const navLinks = document.querySelectorAll(".nav-link");
 
   if (hamburger && nav) {
-    // Toggle menu when hamburger is clicked
+    // toggle menu when hamburger is clicked
     hamburger.addEventListener("click", function () {
       hamburger.classList.toggle("active");
       nav.classList.toggle("active");
 
-      // Update aria-expanded for accessibility
+      // update aria-expanded for accessibility
       const isExpanded = hamburger.classList.contains("active");
       hamburger.setAttribute("aria-expanded", isExpanded);
 
-      // Prevent body scroll when menu is open
+      // prevent body scroll when menu is open
       if (isExpanded) {
         document.body.style.overflow = "hidden";
       } else {
@@ -75,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    // Close menu when a nav link is clicked
+    // close menu when a nav link is clicked
     navLinks.forEach((link) => {
       link.addEventListener("click", function () {
         hamburger.classList.remove("active");
@@ -85,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-    // Close menu when clicking outside
+    // close menu when clicking outside
     document.addEventListener("click", function (event) {
       const isClickInsideNav = nav.contains(event.target);
       const isClickOnHamburger = hamburger.contains(event.target);
@@ -104,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// ---- LOGIC HIỂN THỊ HEADER KHI SCROLL ----
+// ---- LOGIC FOR DISPLAYING HEADER WHEN SCROLLING ----
 window.addEventListener("scroll", function () {
   const heroHeight = heroSection.offsetHeight;
   const triggerPoint = heroHeight * 0.2;
@@ -117,7 +116,7 @@ window.addEventListener("scroll", function () {
   }
 });
 
-// Logic hiển thị hiệu ứng sao băng và sao trong phần Space
+// logic to display shooting star and star effects in Space section
 (() => {
   const c = document.getElementById("space");
   const ctx = c.getContext("2d");
@@ -179,7 +178,7 @@ window.addEventListener("scroll", function () {
     }
   }
 
-  //Tạo sao băng mới ngẫu nhiên mỗi 2–4 giây
+  // create new meteors at random intervals
   setInterval(() => {
     const num = Math.floor(Math.random() * 2) + 1;
     for (let i = 0; i < num; i++) {
@@ -191,7 +190,7 @@ window.addEventListener("scroll", function () {
     ctx.fillStyle = "rgba(7, 11, 20, 0.5)";
     ctx.fillRect(0, 0, c.width, c.height);
 
-    // Vẽ sao
+    // star
     stars.forEach((star) => {
       star.phase += 0.02;
       const opacity = star.baseOpacity + Math.sin(star.phase) * 0.2;
@@ -204,7 +203,7 @@ window.addEventListener("scroll", function () {
       ctx.fill();
     });
 
-    // Vẽ sao băng
+    // meteors
     meteors.forEach((meteor) => {
       meteor.update();
       meteor.draw();
@@ -221,29 +220,66 @@ window.addEventListener("scroll", function () {
   });
 })();
 
-// Logic hiển thị phần tử khi cuộn trang (Fade-in effect)
+// logic to display fade-in/fade-out effect when scrolling page
 document.addEventListener("DOMContentLoaded", function () {
+  let lastScrollY = window.scrollY;
+
   const faders = document.querySelectorAll(".fade-in-section");
 
   const appearOptions = {
     threshold: 0.2,
+    rootMargin: "0px 0px -50px 0px",
   };
 
-  const appearOnScroll = new IntersectionObserver(function (entries, observer) {
+  const appearOnScroll = new IntersectionObserver(function (entries) {
+    const currentScrollY = window.scrollY;
+    const isScrollingUp = currentScrollY < lastScrollY;
+
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
+      } else if (isScrollingUp) {
+        entry.target.classList.remove("visible");
       }
     });
+
+    lastScrollY = currentScrollY;
   }, appearOptions);
 
   faders.forEach((fader) => {
     appearOnScroll.observe(fader);
   });
+
+  // Timeline items fade-in/fade-out effect
+  let lastScrollYTimeline = window.scrollY;
+  const timelineItems = document.querySelectorAll(".timeline-item");
+
+  const timelineOptions = {
+    threshold: 0.3,
+    rootMargin: "0px 0px -100px 0px",
+  };
+
+  const timelineObserver = new IntersectionObserver(function (entries) {
+    const currentScrollY = window.scrollY;
+    const isScrollingUp = currentScrollY < lastScrollYTimeline;
+
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("fade-in");
+      } else if (isScrollingUp) {
+        entry.target.classList.remove("fade-in");
+      }
+    });
+
+    lastScrollYTimeline = currentScrollY;
+  }, timelineOptions);
+
+  timelineItems.forEach((item) => {
+    timelineObserver.observe(item);
+  });
 });
 
-// Logic hiển thị hiệu ứng hạt trong phần Tech
+// particle effect display logic in Tech section
 (function () {
   const canvas = document.getElementById("particles-bg");
   if (!canvas) return;
@@ -256,12 +292,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const colors = ["#ff4d6d", "#f9c74f", "#90be6d", "#4cc9f0", "#f72585"];
 
   function createParticles() {
-    // Điều chỉnh số lượng particles dựa trên kích thước - Tăng lên nhiều hơn
     let particleCount = 600;
     if (width < 200) {
-      particleCount = 400; // Màn hình rất nhỏ (150px) - tăng từ 200 lên 400
+      particleCount = 400;
     } else if (width < 250) {
-      particleCount = 500; // Màn hình nhỏ (200px) - tăng từ 300 lên 500
+      particleCount = 500;
     }
 
     particles = Array.from({ length: particleCount }, () => ({
@@ -311,7 +346,6 @@ document.addEventListener("DOMContentLoaded", function () {
     ctx.clearRect(0, 0, width, height);
 
     particles.forEach((p) => {
-      // Tính lực đẩy nếu chuột hiện diện
       if (mouse.x !== null && mouse.y !== null) {
         const dx = p.x - mouse.x;
         const dy = p.y - mouse.y;
@@ -364,7 +398,7 @@ function animateFollower() {
 }
 animateFollower();
 
-// Logic hiển thị hiệu ứng di chuyển chuột trong phần About
+// logic to display mouse movement effect in About section
 document.addEventListener("DOMContentLoaded", function () {
   const box = document.querySelector(".about-box");
   if (!box) return;
@@ -412,7 +446,7 @@ box.addEventListener("mousemove", (e) => {
   box.style.setProperty("--mouse-y", `${y}px`);
 });
 
-// Logic hiển thị danh sách project theo skills
+// Logic for fetching GitHub repos and displaying in skill panel
 const username = "Ocennami";
 const badges = document.querySelectorAll(".skill-badge");
 const panel = document.querySelector(".skill-panel");
@@ -447,7 +481,6 @@ badges.forEach((btn) => {
 function showPanel(skill, repos) {
   panel.dataset.current = skill;
 
-  // Viết hoa chữ cái đầu của skill (javascript -> Javascript)
   const capitalizedSkill = skill.charAt(0).toUpperCase() + skill.slice(1);
 
   const skillIconColors = {
@@ -460,7 +493,7 @@ function showPanel(skill, repos) {
     Python: "#3776AB",
   };
 
-  // Cải thiện cấu trúc HTML để dễ dàng tạo kiểu
+  // Improve HTML structure for easier styling
   panelContent.innerHTML = `
     <div class="panel-header-new">
       <span class="language-icon" style="background-color: ${
@@ -479,7 +512,7 @@ function showPanel(skill, repos) {
     <div class="card-grid-new">
       ${repos
         .map((repo) => {
-          // Định dạng lại ngôn ngữ để hiển thị trên badge
+          // Format language for display on badge
           const repoLanguage = repo.language || "Unknown";
 
           return `
@@ -530,12 +563,11 @@ function closePanel() {
 function fallbackSkillMatch(repoName, skill) {
   const map = {
     Java: ["Parkour"],
-    // thêm repo nếu GitHub API không nhận diện đúng ngôn ngữ
   };
   return map[skill]?.includes(repoName) || false;
 }
 
-// Logic hiển thị hiệu ứng di chuyển chuột trong phần Contact
+// logic to display mouse movement effect in Contact section
 document.addEventListener("DOMContentLoaded", function () {
   const contactBox = document.querySelector(".contact-box");
   if (!contactBox) return;
@@ -562,26 +594,26 @@ document.addEventListener("DOMContentLoaded", function () {
   const artistElement = musicPlayer.querySelector(".player-artist");
   const linkBtn = musicPlayer.querySelector(".player-link");
 
-  // Playlist với file MP3 thực
+  // Playlist of tracks
   const playlist = [
     {
       title: "Nếu một ngày chúng ta không còn gặp",
       artist: "2CAN",
-      cover: "picture/NẾU MỘT NGÀY CHÚNG TA KHÔNG CÒN GẶP.jpg",
+      cover: "picture/Music Images/NẾU MỘT NGÀY CHÚNG TA KHÔNG CÒN GẶP.jpg",
       src: "music/NẾU MỘT NGÀY CHÚNG TA KHÔNG CÒN GẶP (ft. 2CAN).mp3",
       link: "https://open.spotify.com/track/5BsnY4AATNyLE3OWUqHLQg?si=4a2c8b4d59414f51",
     },
     {
       title: "Điều chưa nói",
       artist: "Tứa ft. CM1X",
-      cover: "picture/Điều Chưa Nói - Tùa ft. CM1X - TÙA.jpg",
+      cover: "picture/Music Images/Điều Chưa Nói - Tùa ft. CM1X - TÙA.jpg",
       src: "music/Điều Chưa Nói - Tùa ft. CM1X - TÙA.mp3",
       link: "https://open.spotify.com/track/5hzjqKMQPampmtM6eObybz?si=0c869d7ff79a4f8b",
     },
     {
       title: "Ai Đưa Em Về",
       artist: "1nG x VoVanDuc",
-      cover: "picture/Ai Đưa Em Về - 1nG x VoVanDuc.jpg",
+      cover: "picture/Music Images/Ai Đưa Em Về - 1nG x VoVanDuc.jpg",
       src: "music/Ai Đưa Em Về - 1nG x VoVanDuc.mp3",
       link: "https://open.spotify.com/track/6GICR3XCKLGs1llkGTo17f?si=d2ad0316221046ab",
     },
