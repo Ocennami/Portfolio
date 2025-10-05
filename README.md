@@ -16,7 +16,11 @@
 
 ## 👨‍💻 About Me
 
+<<<<<<< HEAD
 I'm Đặng Tuấn Hùng (Oceanami), a passionate developer from Vietnam 🇻🇳. I build things for fun.
+=======
+I'm **Đặng Tuấn Hùng (Oceanami)**, a passionate developer from Vietnam 🇻🇳. I build things for fun.
+>>>>>>> 0e9b872a08603045671297f4fa1fa6af7544dfd8
 
 ### 🤝 Connect with Me
 
