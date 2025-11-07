@@ -1259,6 +1259,12 @@ section {
 }
 
 @media (max-width: 768px) {
+  /* Ensure fade-in sections are more visible on mobile */
+  .fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 30px;
@@ -1268,9 +1274,13 @@ section {
     padding: 60px 20px;
   }
 
+  .projects-title {
+    font-size: 36px;
+  }
+
   .project-card {
     max-width: 100%;
-    min-height: 650px;
+    min-height: auto;
   }
 
   .preview {
@@ -1288,12 +1298,72 @@ section {
   .description {
     font-size: 0.95rem;
   }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .project-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-section {
+    padding: 40px 15px;
+  }
+
+  .projects-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .projects-grid {
+    gap: 20px;
+  }
+
+  .project-card {
+    border-radius: 12px;
+  }
+
+  .content {
+    padding: 16px;
+  }
+
+  .content h3 {
+    font-size: 1.1rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+  }
+
+  .badge {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+  }
+
+  .github {
+    font-size: 13px;
+    padding: 5px 8px;
+  }
+
+  .project-btn {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+
+  .tech-legend {
+    font-size: 13px;
+    gap: 10px;
+  }
 }
 
 .project-card {
   width: 100%;
   max-width: 420px;
-  min-height: 700px;
+  min-height: 650px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -1315,7 +1385,7 @@ section {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
   gap: 32px;
   width: 100%;
   margin-top: 20px;

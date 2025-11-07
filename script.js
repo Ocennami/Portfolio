@@ -226,9 +226,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const faders = document.querySelectorAll(".fade-in-section");
 
+  // Adjust threshold and rootMargin based on screen size
+  const isMobile = window.innerWidth <= 768;
   const appearOptions = {
-    threshold: 0.2,
-    rootMargin: "0px 0px -50px 0px",
+    threshold: isMobile ? 0.1 : 0.2,
+    rootMargin: isMobile ? "0px 0px 0px 0px" : "0px 0px -50px 0px",
   };
 
   const appearOnScroll = new IntersectionObserver(function (entries) {
@@ -250,13 +252,38 @@ document.addEventListener("DOMContentLoaded", function () {
     appearOnScroll.observe(fader);
   });
 
+  // Force check visibility on load and resize (especially for mobile)
+  function checkVisibility() {
+    faders.forEach((fader) => {
+      const rect = fader.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // If element is in viewport or very close, make it visible
+      if (rect.top < windowHeight * 0.9 && rect.bottom > 0) {
+        fader.classList.add("visible");
+      }
+    });
+  }
+
+  // Check on load
+  setTimeout(checkVisibility, 100);
+
+  // Re-check on window resize (important for responsive design)
+  let resizeTimer;
+  window.addEventListener("resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(checkVisibility, 250);
+  });
+
   // Timeline items fade-in/fade-out effect
   let lastScrollYTimeline = window.scrollY;
   const timelineItems = document.querySelectorAll(".timeline-item");
 
+  // Adjust for mobile
+  const isMobileTimeline = window.innerWidth <= 768;
   const timelineOptions = {
-    threshold: 0.3,
-    rootMargin: "0px 0px -100px 0px",
+    threshold: isMobileTimeline ? 0.2 : 0.3,
+    rootMargin: isMobileTimeline ? "0px 0px -50px 0px" : "0px 0px -100px 0px",
   };
 
   const timelineObserver = new IntersectionObserver(function (entries) {
