@@ -32,6 +32,41 @@
   font-weight: normal;
 }
 
+/* JetBrains Mono (local files should be placed in the `fonts/` folder) */
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("fonts/JetBrainsMono-2.304/fonts/webfonts/JetBrainsMono-Regular.woff2")
+      format("woff2"),
+    url("fonts/JetBrainsMono-2.304/fonts/webfonts/JetBrainsMono-Regular.woff")
+      format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("fonts/JetBrainsMono-2.304/fonts/webfonts/JetBrainsMono-Bold.woff2")
+      format("woff2"),
+    url("fonts/JetBrainsMono-2.304/fonts/webfonts/JetBrainsMono-Bold.woff")
+      format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Apply JetBrains Mono as the site's default monospace font */
+body {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    "Roboto Mono", "Segoe UI Mono", monospace;
+}
+
+/* Make sure the preloader (and all its children) keep using VNI Brush */
+#preloader,
+#preloader * {
+  font-family: "VNI-Brush", cursive !important;
+}
+
 #preloader {
   position: fixed;
   inset: 0;
@@ -356,7 +391,6 @@ html {
 
 section {
   padding: 80px 40px;
-  font-family: sans-serif;
 }
 
 .hero-section {
