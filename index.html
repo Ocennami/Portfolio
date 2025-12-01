@@ -110,39 +110,116 @@
         <div class="skills-container">
             <div class="tagskills">Skills</div>
             <h2 class="skills-title">Technologies & Tools</h2>
-            <div class="skill-container">
-                <h2>
-                    Found 7 skills in my GitHub repositories
-                    <span class="subtext">(Project only shows the most used skills first)</span>
-                </h2>
+            
+            <div class="skills-grid">
+                <!-- Programming Languages Section -->
+                <div class="skills-category">
+                    <div class="category-header">
+                        <i class="fas fa-code category-icon"></i>
+                        <h3>Programming Languages</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <i class="fab fa-python skill-icon" style="color: #3776AB;"></i>
+                                <span class="skill-name">Python</span>
+                            </div>
+                            <div class="skill-progress-wrapper">
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 30%; background: linear-gradient(90deg, #3776AB, #FFD43B);"></div>
+                                </div>
+                                <span class="skill-percentage">30%</span>
+                            </div>
+                        </div>
 
-                <div class="badge-list">
-                    <button class="skill-badge" data-skill="html"><span class="dot" style="color: #E34F26;">●</span>
-                        HTML </button>
-                    <button class="skill-badge" data-skill="css"><span class="dot" style="color: #2965f1;">●</span> CSS
-                    </button>
-                    <button class="skill-badge" data-skill="javascript"><span class="dot"
-                            style="color: #f7df1e;">●</span> JavaScript </button>
-                    <button class="skill-badge" data-skill="java"><span class="dot" style="color: #FF7800;">●</span>
-                        Java </button>
-                    <button class="skill-badge" data-skill="csharp"><span class="dot" style="color: #68217A;">●</span>
-                        C# </button>
-                    <button class="skill-badge" data-skill="cpp"><span class="dot" style="color: #00599C;">●</span> C++
-                    </button>
-                        <button class="skill-badge" data-skill="python"><span class="dot" style="color: #3776AB;">●</span>
-                            Python </button>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <i class="fab fa-js skill-icon" style="color: #f7df1e;"></i>
+                                <span class="skill-name">JavaScript</span>
+                            </div>
+                            <div class="skill-progress-wrapper">
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 49%; background: linear-gradient(90deg, #f7df1e, #f0db4f);"></div>
+                                </div>
+                                <span class="skill-percentage">49%</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <i class="fas fa-copyright skill-icon" style="color: #A8B9CC;"></i>
+                                <span class="skill-name">C</span>
+                            </div>
+                            <div class="skill-progress-wrapper">
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 20%; background: linear-gradient(90deg, #A8B9CC, #283593);"></div>
+                                </div>
+                                <span class="skill-percentage">20%</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <i class="fas fa-code skill-icon" style="color: #00599C;"></i>
+                                <span class="skill-name">C++</span>
+                            </div>
+                            <div class="skill-progress-wrapper">
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 17%; background: linear-gradient(90deg, #00599C, #044F88);"></div>
+                                </div>
+                                <span class="skill-percentage">17%</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <i class="fab fa-java skill-icon" style="color: #007396;"></i>
+                                <span class="skill-name">Java</span>
+                            </div>
+                            <div class="skill-progress-wrapper">
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 2%; background: linear-gradient(90deg, #007396, #ED8B00);"></div>
+                                </div>
+                                <span class="skill-percentage">2%</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="skill-panel" id="panel-container">
-                    <button class="close-btn" onclick="closePanel()">×</button>
-                    <div id="panel-content"></div>
+                <!-- Tools & Frameworks Section -->
+                <div class="skills-category">
+                    <div class="category-header">
+                        <i class="fas fa-tools category-icon"></i>
+                        <h3>Tools & Frameworks</h3>
+                    </div>
+                    <div class="tools-grid">
+                        <div class="tool-item">
+                            <i class="fab fa-node-js" style="color: #68A063;"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fab fa-react" style="color: #61DAFB;"></i>
+                            <span>React</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fab fa-git-alt" style="color: #F05032;"></i>
+                            <span>Git</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fab fa-github" style="color: #fff;"></i>
+                            <span>GitHub</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fab fa-linux" style="color: #FCC624;"></i>
+                            <span>Linux</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-bolt" style="color: #A97BFF;"></i>
+                            <span>Vite</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <p class="note">
-                Click on any skill badge to see the original GitHub repositories where it was used
-            </p>
-        </div>
         </div>
     </section>
 
