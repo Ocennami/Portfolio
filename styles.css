@@ -2431,7 +2431,7 @@ textarea {
 }
 
 .site-footer {
-  background-color: #0f0f0f;
+  background-color: transparent;
   padding: 40px 20px;
   text-align: center;
   color: #aaa;
@@ -2522,40 +2522,30 @@ textarea {
   }
 }
 
-/* --- Tùy chỉnh thanh cuộn cho toàn bộ trang --- */
-
-/* Áp dụng cho các trình duyệt WebKit (Chrome, Safari, Edge) */
-
-/* Toàn bộ thanh cuộn */
 ::-webkit-scrollbar {
-  width: 10px; /* Độ rộng của thanh cuộn */
+  width: 10px;
 }
 
-/* Phần rãnh trượt (nền của thanh cuộn) */
 ::-webkit-scrollbar-track {
-  background: #0f172a; /* Màu nền tối, tiệp với màu nền của bạn */
+  background: #0f172a;
   border-radius: 5px;
 }
 
-/* Phần con trượt (thanh cuộn có thể kéo) */
 ::-webkit-scrollbar-thumb {
-  background-color: #a855f7; /* Một màu xám trung tính */
+  background-color: #a855f7;
   border-radius: 5px;
-  border: 2px solid #0f172a; /* Tạo một khoảng viền nhỏ tiệp màu với rãnh trượt */
+  border: 2px solid #0f172a;
 }
 
-/* Con trượt khi di chuột vào */
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #c084fc; /* Sáng hơn một chút khi hover */
+  background-color: #c084fc;
 }
 
-/* Hỗ trợ cho Firefox */
 html {
-  scrollbar-width: thin; /* "thin", "auto", hoặc "none" */
-  scrollbar-color: #a855f7 #0f172a; /* [màu con trượt] [màu rãnh trượt] */
+  scrollbar-width: thin;
+  scrollbar-color: #a855f7 #0f172a;
 }
 
-/* Music player widget */
 .music-player {
   position: fixed;
   bottom: 32px;
