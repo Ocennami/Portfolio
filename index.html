@@ -1,525 +1,334 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oceanami - Developer Portfolio</title>
+    <meta name="description"
+        content="Portfolio of Oceanami (Đặng Tuấn Hùng) — Software Engineer from Vietnam. Building creative digital products with passion.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <canvas id="space" aria-hidden="true"></canvas>
-    <div class="bg-gradient" aria-hidden="true"></div>
+
+    <!-- Preloader -->
     <div id="preloader">
-        <div class="custom-loader-content">
+        <div class="preloader-content">
             <h1 class="preloader-title">Oceanami From VietNam</h1>
-            <div class="underline-bar"></div>
+            <div class="preloader-bar"></div>
         </div>
     </div>
-    </div>
-    <div id="mouse-follower"></div>
-    <header class="header">
-        <a href="#home" class="logo highlight">Oceanami</a>
 
-        <nav class="nav">
+    <!-- Mouse Follower -->
+    <div id="mouse-follower"></div>
+
+    <!-- Header -->
+    <header class="header" id="site-header">
+        <a href="#hero" class="logo">Ocean<span class="gradient-text">ami</span></a>
+        <nav class="nav" id="site-nav">
             <ul class="nav-menu">
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#hero" class="nav-link">Home</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#experiences" class="nav-link">Experiences</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </nav>
-
-        <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
         </button>
     </header>
 
-    <section id="home" class="home-section">
-        <div class="hero-content">
-            <div class="tag">Software Engineer</div>
-            <h1 class="hero-title">Hi, I'm <span class="highlight">Oceanami</span></h1>
-            <p class="hero-desc">just a dev who does everything i luv
-            </p>
-            <div class="hero-homebuttons">
-                <a href="https://github.com/Ocennami" class="primary" target="_blank">View Projects →</a>
-                <a href="#contact" class="secondary">Contact Me</a>
+    <!-- Hero + About (Merged) -->
+    <section id="hero" class="hero-section">
+        <div class="hero-container">
+            <div class="hero-main">
+                <div class="hero-text">
+                    <div class="section-tag"><i class="fas fa-code"></i> Software Engineer</div>
+                    <h1 class="hero-title">Hi, I'm <span class="gradient-text">Oceanami</span></h1>
+                    <p class="hero-tagline">just a dev who does everything i luv</p>
+                    <div class="hero-buttons">
+                        <a href="https://github.com/Ocennami" class="btn btn-primary" target="_blank">
+                            <i class="fab fa-github"></i> View Projects →
+                        </a>
+                        <a href="#contact" class="btn btn-outline">Contact Me</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="avatar-container">
+                        <img src="picture/avatar.jpg" alt="Oceanami" class="avatar-img"
+                            onerror="this.src='https://via.placeholder.com/400x500/1a1625/c4b5fd?text=Oceanami'">
+                        <div class="avatar-ring"></div>
+                        <div class="availability-badge">
+                            <span class="status-dot"></span> Available
+                        </div>
+                    </div>
+                    <div class="tech-particles">
+                        <canvas id="particles-bg"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Info (Bento Grid) -->
+            <div class="about-bento">
+                <div class="bento-bio glass-card">
+                    <p>I am Oceanami – a programmer from Vietnam, who loves the combination of logic and creativity to
+                        build valuable digital products. Whether it is a useful software or an interesting game, I am
+                        meticulous, careful and eager to learn, along with a desire to develop.</p>
+                    <p>I specialize in software development, optimization, love playing and creating games, always
+                        exploring new technologies to improve my skills, and I also have a passion for the Minecraft
+                        world with its endless programming possibilities.</p>
+                </div>
+                <div class="bento-info">
+                    <div class="info-chip glass-card">
+                        <i class="fas fa-user"></i>
+                        <div>
+                            <span class="chip-label">Full Name</span>
+                            <span class="chip-value">Đặng Tuấn Hùng</span>
+                        </div>
+                    </div>
+                    <div class="info-chip glass-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <span class="chip-label">Education</span>
+                            <span class="chip-value">EPU</span>
+                        </div>
+                    </div>
+                    <div class="info-chip glass-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <span class="chip-label">Location</span>
+                            <span class="chip-value">VietNam</span>
+                        </div>
+                    </div>
+                    <div class="info-chip glass-card">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <span class="chip-label">Email</span>
+                            <span class="chip-value">dangtuanhung2354@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="tech-particles">
-            <canvas id="particles-bg"></canvas>
-        </div>
-        <a href="#about" class="scroll-indicator" aria-label="Scroll down">
+
+        <a href="#projects" class="scroll-indicator" aria-label="Scroll down">
             <div class="mouse">
                 <div class="wheel"></div>
             </div>
         </a>
-        </div>
     </section>
 
-    <section id="about" class="about-section fade-in-section">
-        <div class="about-container">
-            <div class="tagabout">My Background</div>
-            <h2 class="about-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-image-wrapper">
-                    <div class="about-image">
-                        <img src="picture/avatar.jpg" alt="Oceanami" onerror="this.src='https://via.placeholder.com/400x500/1a1625/c4b5fd?text=Your+Image+Here'">
-                        <div class="image-glow"></div>
-                    </div>
-                    <div class="availability-badge">
-                        <span class="status-dot"></span>
-                        Available for work
-                    </div>
-                </div>
-                <div class="about-box">
-                    <p class="about-desc">
-                        I am Oceanami – a programmer from Vietnam, who loves the combination of logic and creativity to
-                        build valuable digital products. Whether it is a useful software or an interesting game, I am
-                        meticulous, careful and eager to learn, along with a desire to develop.
-                    </p>
-
-                    <p class="about-desc">
-                        I specialize in software development, optimization, love playing and creating games, always
-                        exploring new technologies to improve my skills, and I also have a passion for the Minecraft 
-                        world with its endless programming possibilities. I have been fascinated with computers since 
-                        I was 10 years old, started playing Minecraft in 2018 and immediately became interested in 
-                        creating a Minecraft server from 2019 until now. Currently, I am working on a project myself 
-                        with the aim of creating an interesting playground for friends and improving my thinking and 
-                        programming skills.
-                    </p>
-                    <p class="about-info"><strong>Full Name:</strong> Đặng Tuấn Hùng (Oceanami)</p>
-                    <p class="about-info"><strong>Education:</strong> EPU</p>
-                    <p class="about-info"><strong>Location:</strong> VietNam</p>
-                    <p class="about-info"><strong>Email:</strong> dangtuanhung2354@gmail.com</p>
-                    <p class="about-info">
-                        <strong>Availability:</strong>
-                        <span class="available">Open to opportunities</span>
-                    </p>
-                </div>
+    <!-- Projects -->
+    <section id="projects" class="section fade-in-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-tag"><i class="fas fa-rocket"></i> Projects</div>
+                <h2 class="section-title">My Projects</h2>
             </div>
-        </div>
-    </section>
-
-    <section id="skills" class="skills-section fade-in-section">
-        <div class="skills-container">
-            <div class="tagskills">Skills</div>
-            <h2 class="skills-title">Technologies & Tools</h2>
-            
-            <div class="skills-grid">
-                <!-- Programming Languages Section -->
-                <div class="skills-category">
-                    <div class="category-header">
-                        <i class="fas fa-code category-icon"></i>
-                        <h3>Programming Languages</h3>
-                    </div>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <i class="fab fa-python skill-icon" style="color: #3776AB;"></i>
-                                <span class="skill-name">Python</span>
-                            </div>
-                            <div class="skill-progress-wrapper">
-                                <div class="skill-progress">
-                                    <div class="skill-progress-bar" style="width: 30%; background: linear-gradient(90deg, #3776AB, #FFD43B);"></div>
-                                </div>
-                                <span class="skill-percentage">30%</span>
-                            </div>
-                        </div>
-
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <i class="fab fa-js skill-icon" style="color: #f7df1e;"></i>
-                                <span class="skill-name">JavaScript</span>
-                            </div>
-                            <div class="skill-progress-wrapper">
-                                <div class="skill-progress">
-                                    <div class="skill-progress-bar" style="width: 49%; background: linear-gradient(90deg, #f7df1e, #f0db4f);"></div>
-                                </div>
-                                <span class="skill-percentage">49%</span>
-                            </div>
-                        </div>
-
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <i class="fas fa-copyright skill-icon" style="color: #A8B9CC;"></i>
-                                <span class="skill-name">C</span>
-                            </div>
-                            <div class="skill-progress-wrapper">
-                                <div class="skill-progress">
-                                    <div class="skill-progress-bar" style="width: 20%; background: linear-gradient(90deg, #A8B9CC, #283593);"></div>
-                                </div>
-                                <span class="skill-percentage">20%</span>
-                            </div>
-                        </div>
-
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <i class="fas fa-code skill-icon" style="color: #00599C;"></i>
-                                <span class="skill-name">C++</span>
-                            </div>
-                            <div class="skill-progress-wrapper">
-                                <div class="skill-progress">
-                                    <div class="skill-progress-bar" style="width: 17%; background: linear-gradient(90deg, #00599C, #044F88);"></div>
-                                </div>
-                                <span class="skill-percentage">17%</span>
-                            </div>
-                        </div>
-
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <i class="fab fa-java skill-icon" style="color: #007396;"></i>
-                                <span class="skill-name">Java</span>
-                            </div>
-                            <div class="skill-progress-wrapper">
-                                <div class="skill-progress">
-                                    <div class="skill-progress-bar" style="width: 2%; background: linear-gradient(90deg, #007396, #ED8B00);"></div>
-                                </div>
-                                <span class="skill-percentage">2%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tools & Frameworks Section -->
-                <div class="skills-category">
-                    <div class="category-header">
-                        <i class="fas fa-tools category-icon"></i>
-                        <h3>Tools & Frameworks</h3>
-                    </div>
-                    <div class="tools-grid">
-                        <div class="tool-item">
-                            <i class="fab fa-node-js" style="color: #68A063;"></i>
-                            <span>Node.js</span>
-                        </div>
-                        <div class="tool-item">
-                            <i class="fab fa-react" style="color: #61DAFB;"></i>
-                            <span>React</span>
-                        </div>
-                        <div class="tool-item">
-                            <i class="fab fa-git-alt" style="color: #F05032;"></i>
-                            <span>Git</span>
-                        </div>
-                        <div class="tool-item">
-                            <i class="fab fa-github" style="color: #fff;"></i>
-                            <span>GitHub</span>
-                        </div>
-                        <div class="tool-item">
-                            <i class="fab fa-linux" style="color: #FCC624;"></i>
-                            <span>Linux</span>
-                        </div>
-                        <div class="tool-item">
-                            <i class="fas fa-bolt" style="color: #A97BFF;"></i>
-                            <span>Vite</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="projects-section fade-in-section">
-        <div class="projects-container">
-            <div class="tagprojects">Projects</div>
-            <h2 class="projects-title">My Projects</h2>
             <div class="projects-grid">
-                <div class="project-card">
+                <!-- Portfolio -->
+                <div class="project-card glass-card">
                     <div class="project-image">
-                        <img src="picture/Projects/PortfolioProject.png" alt="PortfolioProject Image" class="preview" />
+                        <img src="picture/Projects/PortfolioProject.png" alt="Portfolio Project" />
                     </div>
-                    <div class="content">
+                    <div class="project-content">
                         <h3>Portfolio Modern</h3>
-                        <p class="description">
-                            A visually stunning, modern portfolio website built with HTML, CSS and JavaScript, combine
-                            with Canvas API to create interactive effects and smooth animations, providing an engaging
-                            experience for viewers.
-                        </p>
-
-                        <div class="card-body">
-                            <div class="tags">
-                                <span class="github"><i class="fab fa-github"></i> GitHub Topics</span>
-                                <span class="badge">HTML</span>
-                                <span class="badge">CSS</span>
-                                <span class="badge">JavaScript</span>
-                            </div>
-
-                            <div class="tech-bar">
-                                <div class="bar html" style="width: 45%"></div>
-                                <div class="bar css" style="width: 30%"></div>
-                                <div class="bar js" style="width: 25%"></div>
-                            </div>
-                            <div class="tech-legend">
-                                <span><span class="dot html"></span> HTML</span>
-                                <span><span class="dot css"></span> CSS</span>
-                                <span><span class="dot javascript"></span> JS</span>
-                            </div>
-                            <hr class="divider" />
-                            <div class="buttons">
-                                <a href="https://github.com/Ocennami/Portfolio" class="project-btn"><i class="fab fa-github"></i> Code</a>
-                                <a href="https://www.oceanami.tech/" class="project-btn demo">Live Demo</a>
-                            </div>
+                        <p class="project-desc">A visually stunning, modern portfolio website built with HTML, CSS and
+                            JavaScript, combined with Canvas API for interactive effects and smooth animations.</p>
+                        <div class="project-tags">
+                            <span class="badge">HTML</span>
+                            <span class="badge">CSS</span>
+                            <span class="badge">JavaScript</span>
+                        </div>
+                        <div class="tech-bar">
+                            <div class="bar html" style="width: 45%"></div>
+                            <div class="bar css" style="width: 30%"></div>
+                            <div class="bar js" style="width: 25%"></div>
+                        </div>
+                        <div class="tech-legend">
+                            <span><span class="dot html"></span> HTML</span>
+                            <span><span class="dot css"></span> CSS</span>
+                            <span><span class="dot javascript"></span> JS</span>
+                        </div>
+                        <div class="project-buttons">
+                            <a href="https://github.com/Ocennami/Portfolio" class="btn btn-sm"><i
+                                    class="fab fa-github"></i> Code</a>
+                            <a href="https://www.oceanami.tech/" class="btn btn-sm btn-accent">Live Demo</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <!-- Parkour Plugin -->
+                <div class="project-card glass-card">
                     <div class="project-image">
-                        <img src="picture/Projects/ParkourProject.png" alt="ParkourProject Image" class="preview" />
+                        <img src="picture/Projects/ParkourProject.png" alt="Parkour Plugin" />
                     </div>
-                    <div class="content">
+                    <div class="project-content">
                         <h3>Parkour Plugin Minecraft</h3>
-                        <p class="description">
-                            Parkour Plugin System is created to suit Aorganiz Private Server.
-                        </p>
-
-                        <div class="card-body">
-                            <div class="tags">
-                                <span class="github"><i class="fab fa-github"></i> GitHub Topics</span>
-                                <span class="badge">Java</span>
-                            </div>
-
-                            <div class="tech-bar">
-                                <div class="bar java" style="width: 100%"></div>
-                            </div>
-                            <div class="tech-legend">
-                                <span><span class="dot java"></span> Java</span>
-                            </div>
-                            <hr class="divider" />
-                            <div class="buttons">
-                                <a href="https://github.com/Ocennami/Parkour" class="project-btn"><i
-                                        class="fab fa-github"></i> Code</a>
-                            </div>
+                        <p class="project-desc">Parkour Plugin System is created to suit Aorganiz Private Server.</p>
+                        <div class="project-tags">
+                            <span class="badge">Java</span>
+                        </div>
+                        <div class="tech-bar">
+                            <div class="bar java" style="width: 100%"></div>
+                        </div>
+                        <div class="tech-legend">
+                            <span><span class="dot java"></span> Java</span>
+                        </div>
+                        <div class="project-buttons">
+                            <a href="https://github.com/Ocennami/Parkour" class="btn btn-sm"><i
+                                    class="fab fa-github"></i> Code</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <!-- Word Chain Game -->
+                <div class="project-card glass-card">
                     <div class="project-image">
-                        <img src="picture/Projects/BlockChainGameProject.png" alt="BlockChainGameProject Image" class="preview" />
+                        <img src="picture/Projects/BlockChainGameProject.png" alt="Word Chain Game" />
                     </div>
-                    <div class="content">
+                    <div class="project-content">
                         <h3>Word Chain Game</h3>
-                        <p class="description">
-                            Bot Discord play minigame word chain game.
-                        </p>
-
-                        <div class="card-body">
-                            <div class="tags">
-                                <span class="github"><i class="fab fa-github"></i> GitHub Topics</span>
-                                <span class="badge">Python</span>
-                            </div>
-
-                            <div class="tech-bar">
-                                <div class="bar python" style="width: 100%"></div>
-                            </div>
-                            <div class="tech-legend">
-                                <span><span class="dot python"></span> Python</span>
-                            </div>
-                            <hr class="divider" />
-                            <div class="buttons">
-                                <a href="https://github.com/Ocennami/Word-Chain-Game" class="project-btn"><i
-                                        class="fab fa-github"></i> Code</a>
-                            </div>
+                        <p class="project-desc">Bot Discord play minigame word chain game.</p>
+                        <div class="project-tags">
+                            <span class="badge">Python</span>
+                        </div>
+                        <div class="tech-bar">
+                            <div class="bar python" style="width: 100%"></div>
+                        </div>
+                        <div class="tech-legend">
+                            <span><span class="dot python"></span> Python</span>
+                        </div>
+                        <div class="project-buttons">
+                            <a href="https://github.com/Ocennami/Word-Chain-Game" class="btn btn-sm"><i
+                                    class="fab fa-github"></i> Code</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <!-- OceanamiApps -->
+                <div class="project-card glass-card">
                     <div class="project-image">
-                        <img src="picture/Projects/OceanamiApps.png" alt="OceanamiApps Image" class="preview" />
+                        <img src="picture/Projects/OceanamiApps.png" alt="OceanamiApps" />
                     </div>
-                    <div class="content">
+                    <div class="project-content">
                         <h3>OceanamiApps</h3>
-                        <p class="description">
-                            Website of Apps developed by Oceanami. In here, you can download apps developed by Oceanami.
-                        </p>
-
-                        <div class="card-body">
-                            <div class="tags">
-                                <span class="github"><i class="fab fa-github"></i> GitHub Topics</span>
-                                <span class="badge">TypeScript</span>
-                                <span class="badge">CSS</span>
-                                <span class="badge">PLpgSQL</span>
-                                <span class="badge">JavaScript</span>
-                                <span class="badge">HTML</span>
-                            </div>
-
-                            <div class="tech-bar">
-                                <div class="bar typescript" style="width: 54.2%"></div>
-                                <div class="bar css" style="width: 36.5%"></div>
-                                <div class="bar plpgsql" style="width: 6.3%"></div>
-                                <div class="bar js" style="width: 1.9%"></div>
-                                <div class="bar html" style="width: 1.1%"></div>
-                            </div>
-                            <div class="tech-legend">
-                                <span><span class="dot typescript"></span> TypeScript</span>
-                                <span><span class="dot css"></span> CSS</span>
-                                <span><span class="dot plpgsql"></span> PLpgSQL</span>
-                                <span><span class="dot javascript"></span> JavaScript</span>
-                                <span><span class="dot html"></span> HTML</span>
-                            </div>
-                            <hr class="divider" />
-                            <div class="buttons">
-                                <a href="https://github.com/Ocennami/OceanamiApps" class="project-btn"><i
-                                        class="fab fa-github"></i> Code</a>
-                                <a href="https://www.oceanami.app/" class="project-btn demo">Live Demo</a>
-                            </div>
+                        <p class="project-desc">Website of Apps developed by Oceanami. In here, you can download apps
+                            developed by Oceanami.</p>
+                        <div class="project-tags">
+                            <span class="badge">TypeScript</span>
+                            <span class="badge">CSS</span>
+                            <span class="badge">PLpgSQL</span>
+                            <span class="badge">JavaScript</span>
+                            <span class="badge">HTML</span>
+                        </div>
+                        <div class="tech-bar">
+                            <div class="bar typescript" style="width: 54.2%"></div>
+                            <div class="bar css" style="width: 36.5%"></div>
+                            <div class="bar plpgsql" style="width: 6.3%"></div>
+                            <div class="bar js" style="width: 1.9%"></div>
+                            <div class="bar html" style="width: 1.1%"></div>
+                        </div>
+                        <div class="tech-legend">
+                            <span><span class="dot typescript"></span> TS</span>
+                            <span><span class="dot css"></span> CSS</span>
+                            <span><span class="dot plpgsql"></span> PLpgSQL</span>
+                            <span><span class="dot javascript"></span> JS</span>
+                            <span><span class="dot html"></span> HTML</span>
+                        </div>
+                        <div class="project-buttons">
+                            <a href="https://github.com/Ocennami/OceanamiApps" class="btn btn-sm"><i
+                                    class="fab fa-github"></i> Code</a>
+                            <a href="https://www.oceanami.app/" class="btn btn-sm btn-accent">Live Demo</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <!-- Alliance Website -->
+                <div class="project-card glass-card">
                     <div class="project-image">
-                        <img src="picture/Projects/AllianceWebsite.png" alt="AllianceWebsite Image" class="preview" />
+                        <img src="picture/Projects/AllianceWebsite.png" alt="Alliance Website" />
                     </div>
-                    <div class="content">
+                    <div class="project-content">
                         <h3>Alliance Website</h3>
-                        <p class="description">
-                            A website about the Alliance Origination group ":v"
-                        </p>
-
-                        <div class="card-body">
-                            <div class="tags">
-                                <span class="github"><i class="fab fa-github"></i> GitHub Topics</span>
-                                <span class="badge">TypeScript</span>
-                                <span class="badge">CSS</span>
-                                <span class="badge">JavaScript</span>
-                            </div>
-
-                            <div class="tech-bar">
-                                <div class="bar typescript" style="width: 97.6%"></div>
-                                <div class="bar css" style="width: 2.1%"></div>
-                                <div class="bar js" style="width: 0.3%"></div>
-                            </div>
-                            <div class="tech-legend">
-                                <span><span class="dot typescript"></span> TypeScript</span>
-                                <span><span class="dot css"></span> CSS</span>
-                                <span><span class="dot javascript"></span> JavaScript</span>
-                            </div>
-                            <hr class="divider" />
-                            <div class="buttons">
-                                <a href="https://github.com/Ocennami/alliance-website" class="project-btn"><i
-                                        class="fab fa-github"></i> Code</a>
-                                <a href="https://alliance-group-website.vercel.app/" class="project-btn demo">Live Demo</a>
-                            </div>
+                        <p class="project-desc">A website about the Alliance Origination group ":v"</p>
+                        <div class="project-tags">
+                            <span class="badge">TypeScript</span>
+                            <span class="badge">CSS</span>
+                            <span class="badge">JavaScript</span>
+                        </div>
+                        <div class="tech-bar">
+                            <div class="bar typescript" style="width: 97.6%"></div>
+                            <div class="bar css" style="width: 2.1%"></div>
+                            <div class="bar js" style="width: 0.3%"></div>
+                        </div>
+                        <div class="tech-legend">
+                            <span><span class="dot typescript"></span> TS</span>
+                            <span><span class="dot css"></span> CSS</span>
+                            <span><span class="dot javascript"></span> JS</span>
+                        </div>
+                        <div class="project-buttons">
+                            <a href="https://github.com/Ocennami/alliance-website" class="btn btn-sm"><i
+                                    class="fab fa-github"></i> Code</a>
+                            <a href="https://alliance-group-website.vercel.app/" class="btn btn-sm btn-accent">Live
+                                Demo</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <div class="content">
-                        <h3>Comming soon...</h3>
-                        <p class="description">
-                            New project is in development. stay tuned for updates and be the first to know when it launches!
-                        </p>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-    </section>
-
-    <section id="experiences" class="experiences-section fade-in-section">
-        <div class="experiences-container">
-            <div class="tagexperiences">Experiences</div>
-            <h2 class="experiences-title">Works Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Owner Group</h3>
-                        <p class="timeline-date">Alliance Organization ":v" | 2021 - Future</p>
-                        <div class="experience-image">
-                            <img src="picture/Experiences/mygroup.jpg" alt="Owner Group Experience" />
-                        </div>
-                        <p class="timeline-desc">
-                            I am still the owner of the Alliance Organization group ":v".
-                        </p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Studying high school</h3>
-                        <p class="timeline-date">Tran Nhan Tong High School - Quang Ninh | 2023 - 2025</p>
-                        <div class="experience-image">
-                            <img src="picture/Experiences/TNTHighSchool.jpg" alt="High School Experience" />
-                        </div>
-                        <p class="timeline-desc">
-                            I have graduated from Tran Nhan Tong High School - Quang Ninh.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Working on my own project</h3>
-                        <p class="timeline-date">Oceanami's Github | 2024 - Future</p>
-                        <div class="experience-image">
-                            <img src="picture/Experiences/mygithub.png" alt="Personal Projects" />
-                        </div>
-                        <p class="timeline-desc">
-                            I used to have a github account in 2024 but it was lost for some reason and I can't find it again *so sad* 
-                            but I will try because my goal is to develop and deploy many of my own projects to improve my learning process and expertise.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>University</h3>
-                        <p class="timeline-date">Electric Power University | 2025 - 2030 (4.5 years)</p>
-                        <div class="experience-image">
-                            <img src="picture/Experiences/epu.jpg" alt="University Experience" />
-                        </div>
-                        <p class="timeline-desc">
-                            I am currently studying at Electric Power University majoring in Software Engineering.
-                        </p>
+                <!-- Coming Soon -->
+                <div class="project-card glass-card coming-soon-card">
+                    <div class="project-content coming-soon-content">
+                        <div class="coming-soon-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>Coming soon...</h3>
+                        <p class="project-desc">New project is in development. Stay tuned for updates and be the first
+                            to know when it launches!</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact-section fade-in-section">
-        <div class="contact-container">
-            <div class="tagcontact">Contact</div>
-            <h2 class="contact-title">My Contact</h2>
-
+    <!-- Contact -->
+    <section id="contact" class="section fade-in-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-tag"><i class="fas fa-paper-plane"></i> Contact</div>
+                <h2 class="section-title">Get In Touch</h2>
+            </div>
             <div class="contact-layout">
-
-                <div class="contact-box">
+                <div class="contact-info-box glass-card">
                     <h3 class="contact-box-title">Contact Information</h3>
-                    <div class="contact-info">
+                    <div class="contact-item">
                         <i class="fas fa-envelope"></i>
                         <div>
                             <strong>Email</strong>
                             <span>dangtuanhung2354@gmail.com</span>
                         </div>
                     </div>
-                    <div class="contact-info">
+                    <div class="contact-item">
                         <i class="fab fa-linkedin-in"></i>
                         <div>
                             <strong>LinkedIn</strong>
                             <span>linkedin.com/in/hung-dang-tuan-9a618737a/</span>
                         </div>
                     </div>
-                    <div class="contact-info">
+                    <div class="contact-item">
                         <i class="fab fa-github"></i>
                         <div>
                             <strong>Github</strong>
                             <span>github.com/Ocennami</span>
                         </div>
                     </div>
-                    <div class="contact-info">
+                    <div class="contact-item">
                         <i class="fab fa-discord"></i>
                         <div>
                             <strong>Discord</strong>
@@ -528,62 +337,62 @@
                     </div>
                     <div class="contact-status">
                         <strong><i class="fas fa-circle online-dot"></i> Current Status</strong>
-                        <span class="available-contact">Available for freelance work and full-time opportunities</span>
+                        <span class="status-available">Available for freelance work and full-time opportunities</span>
                     </div>
                 </div>
-
-                <div class="contact-form-wrapper">
+                <div class="contact-form-box glass-card">
                     <h3 class="contact-box-title">Send Me a Message</h3>
-                    <form action="https://formspree.io/f/myzpvrbk" method="POST">
+                    <form action="https://formspree.io/f/myzpvrbk" method="POST" id="contact-form">
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            <label for="contact-name">Name</label>
+                            <input type="text" id="contact-name" name="name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                            <label for="contact-email">Email</label>
+                            <input type="email" id="contact-email" name="email" placeholder="Your Email" required>
                         </div>
                         <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                            <label for="contact-subject">Subject</label>
+                            <input type="text" id="contact-subject" name="subject" placeholder="Subject" required>
                         </div>
                         <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Your Message"
+                            <label for="contact-message">Message</label>
+                            <textarea id="contact-message" name="message" rows="4" placeholder="Your Message"
                                 required></textarea>
                         </div>
-                        <button type="submit" class="send-button">
+                        <button type="submit" class="btn btn-primary btn-full">
                             Send Message <i class="fas fa-paper-plane"></i>
                         </button>
                     </form>
                 </div>
-
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="site-footer">
-        <div class="footer-top-border"></div>
-
+        <div class="footer-gradient"></div>
         <div class="footer-content">
-            <div class="footer-left">
-                <h2><span class="highlight">Ocea</span>nami</h2>
-                <p>© <span id="year"></span> 2025 Oceanami. All rights reserved.</p>
+            <div class="footer-brand">
+                <h2>Ocean<span class="gradient-text">ami</span></h2>
+                <p>© 2025 Oceanami. All rights reserved.</p>
             </div>
-
             <div class="footer-social">
-                <a href="https://github.com/Ocennami" class="social-icon"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/hung-dang-tuan-9a618737a/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#contact" class="social-icon"><i class="fas fa-envelope"></i></a>
-                <a href="https://www.facebook.com/dangtuanhung.235427" class="social-icon"><i
+                <a href="https://github.com/Ocennami" class="social-icon" aria-label="GitHub"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/hung-dang-tuan-9a618737a/" class="social-icon"
+                    aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#contact" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.facebook.com/dangtuanhung.235427" class="social-icon" aria-label="Facebook"><i
                         class="fab fa-facebook-f"></i></a>
             </div>
         </div>
-
-        <div class="footer-nav">
-            <p><span id="year"></span> Designed & Developed by <span class="highlight">Oceanami</span></p>
+        <div class="footer-bottom">
+            <p>Designed & Developed by <span class="gradient-text">Oceanami</span></p>
         </div>
     </footer>
+
+    <!-- Music Player -->
     <aside class="music-player" aria-label="Music player">
         <img class="player-cover" src="picture/Music Images/NẾU MỘT NGÀY CHÚNG TA KHÔNG CÒN GẶP.jpg" alt="Album art">
         <div class="player-meta">
@@ -606,6 +415,7 @@
         </div>
         <audio class="player-audio" preload="metadata"></audio>
     </aside>
+
     <script src="script.js"></script>
 </body>
 
