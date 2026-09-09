@@ -570,3 +570,43 @@ document.addEventListener("DOMContentLoaded", () => {
     // Load initial track
     loadTrack(currentTrackIndex);
 });
+
+/* ========================================================================== 
+   7. PROJECT DETAILS WINDOW
+   ========================================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("mangamori-modal");
+    if (!modal) return;
+
+    const openButton = document.querySelector('[data-open-project="mangamori-modal"]');
+    const closeButtons = modal.querySelectorAll("[data-close-project]");
+    const minimizeButton = modal.querySelector('[data-window-action="minimize"]');
+
+    const closeModal = () => {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("project-modal-open");
+        if (openButton) openButton.focus();
+    };
+
+    const openModal = () => {
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("project-modal-open");
+        closeButtons[0]?.focus();
+    };
+
+    openButton?.addEventListener("click", openModal);
+    closeButtons.forEach(button => button.addEventListener("click", closeModal));
+    minimizeButton?.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", (event) => {
+        if (event.target === modal) closeModal();
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && modal.classList.contains("is-open")) {
+            closeModal();
+        }
+    });
+});

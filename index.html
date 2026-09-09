@@ -284,6 +284,40 @@
                     </div>
                 </div>
 
+                <!-- MangaMori Website -->
+                <div class="project-card glass-card">
+                    <div class="project-image">
+                        <img src="picture/Projects/MangaMoriProject.png" alt="MangaMori Website" />
+                    </div>
+                    <div class="project-content">
+                        <h3>MangaMori Website</h3>
+                        <p class="project-desc">Dự án website cung cấp đọc truyện tranh cho cộng đồng yêu truyện tranh
+                        </p>
+                        <div class="project-tags">
+                            <span class="badge">TypeScript</span>
+                            <span class="badge">CSS</span>
+                            <span class="badge">JavaScript</span>
+                        </div>
+                        <div class="tech-bar">
+                            <div class="bar typescript" style="width: 91.3%"></div>
+                            <div class="bar python" style="width: 5.5%"></div>
+                            <div class="bar css" style="width: 1%"></div>
+                            <div class="bar js" style="width: 0.9%"></div>
+                        </div>
+                        <div class="tech-legend">
+                            <span><span class="dot typescript"></span> TS</span>
+                            <span><span class="dot python"></span> Python</span>
+                            <span><span class="dot css"></span> CSS</span>
+                            <span><span class="dot javascript"></span> JS</span>
+                        </div>
+                        <div class="project-buttons">
+                            <button type="button" class="btn btn-sm btn-accent" data-open-project="mangamori-modal">
+                                <i class="fas fa-window-maximize"></i> Project Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Coming Soon -->
                 <div class="project-card glass-card coming-soon-card">
                     <div class="project-content coming-soon-content">
@@ -296,6 +330,144 @@
             </div>
         </div>
     </section>
+
+    <!-- MangaMori project details window -->
+    <div class="project-modal" id="mangamori-modal" role="dialog" aria-modal="true"
+        aria-labelledby="mangamori-window-title" aria-hidden="true">
+        <div class="project-window">
+            <!-- Titlebar -->
+            <div class="project-window-titlebar">
+                <div class="window-traffic-lights">
+                    <span class="traffic-dot close" data-close-project title="Close"></span>
+                    <span class="traffic-dot minimize" data-window-action="minimize" title="Minimize"></span>
+                    <span class="traffic-dot expand" title="Expand"></span>
+                </div>
+                <div class="project-window-title">
+                    <span class="project-window-icon"><i class="fas fa-book-open"></i></span>
+                    <span id="mangamori-window-title">projects / mangamori-dev</span>
+                </div>
+                <div class="project-window-actions-top">
+                    <a href="https://mangamori.dev/" target="_blank" rel="noopener" class="window-url-pill">
+                        <i class="fas fa-globe"></i> mangamori.dev <i class="fas fa-arrow-up-right-from-square"></i>
+                    </a>
+                    <button type="button" class="window-close-btn" aria-label="Close window" data-close-project>
+                        <i class="fas fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Body -->
+            <div class="project-window-body">
+                <!-- Left Showcase -->
+                <div class="project-window-showcase">
+                    <div class="project-preview-card">
+                        <div class="preview-browser-bar">
+                            <div class="browser-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <div class="browser-address">https://mangamori.dev</div>
+                            <span class="browser-status-live"><span class="pulse-dot"></span> Live</span>
+                        </div>
+                        <div class="preview-img-wrapper">
+                            <img src="picture/Projects/MangaMoriProject.png" alt="MangaMori website preview">
+                            <div class="preview-overlay">
+                                <a href="https://mangamori.dev/" target="_blank" rel="noopener" class="preview-cta">
+                                    <i class="fas fa-eye"></i> View Live Site
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="preview-stats-bar">
+                        <div class="preview-stat-item">
+                            <span class="stat-num">100%</span>
+                            <span class="stat-name">Responsive</span>
+                        </div>
+                        <div class="preview-stat-item">
+                            <span class="stat-num">&lt; 1s</span>
+                            <span class="stat-name">Load Speed</span>
+                        </div>
+                        <div class="preview-stat-item">
+                            <span class="stat-num">v1.0</span>
+                            <span class="stat-name">Release</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Details -->
+                <div class="project-window-details">
+                    <div class="window-header-meta">
+                        <span class="window-eyebrow"><i class="fas fa-sparkles"></i> FEATURED PROJECT // 06</span>
+                        <span class="window-version-badge"><span class="status-dot"></span> Online</span>
+                    </div>
+
+                    <h2 class="window-title">MangaMori <span class="gradient-text">Website</span></h2>
+
+                    <p class="window-description">
+                        Dự án website truyện tranh được khởi tạo và phát hành ra cộng đồng vào tháng 1/2026, với mục
+                        tiêu cung cấp nền tảng đọc truyện tranh chất lượng cao cho cộng đồng yêu truyện tranh. Đồng thời
+                        là dự án để tôi học hỏi về lập trình web và các công nghệ liên quan.<br>
+                        Hiện nay dự án đang hoạt động ổn định và có lượng truy cập khoảng gần 30 nghìn page view và
+                        khoảng 1k2 active user cho 1 tháng
+                    </p>
+
+                    <!-- Bento Specs Grid -->
+                    <div class="window-spec-grid">
+                        <div class="spec-card">
+                            <div class="spec-icon"><i class="fas fa-code"></i></div>
+                            <div class="spec-info">
+                                <span class="spec-label">Role</span>
+                                <strong>Full-Stack Dev</strong>
+                            </div>
+                        </div>
+                        <div class="spec-card">
+                            <div class="spec-icon"><i class="fas fa-layer-group"></i></div>
+                            <div class="spec-info">
+                                <span class="spec-label">Type</span>
+                                <strong>Web Application</strong>
+                            </div>
+                        </div>
+                        <div class="spec-card">
+                            <div class="spec-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+                            <div class="spec-info">
+                                <span class="spec-label">Focus</span>
+                                <strong>UI/UX & Reader</strong>
+                            </div>
+                        </div>
+                        <div class="spec-card">
+                            <div class="spec-icon"><i class="fas fa-server"></i></div>
+                            <div class="spec-info">
+                                <span class="spec-label">Deployment</span>
+                                <strong>Cloudflare Workers & R2</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tech Stack -->
+                    <div class="window-tech-section">
+                        <span class="tech-section-title">Technologies</span>
+                        <div class="window-tech-stack">
+                            <span class="tech-tag ts"><i class="fab fa-js"></i> TypeScript</span>
+                            <span class="tech-tag py"><i class="fab fa-python"></i> Python</span>
+                            <span class="tech-tag css"><i class="fab fa-css3-alt"></i> CSS3</span>
+                            <span class="tech-tag html"><i class="fab fa-html5"></i> HTML5</span>
+                            <span class="tech-tag api"><i class="fas fa-bolt"></i> RESTful API</span>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="window-actions">
+                        <a href="https://mangamori.dev/" class="btn btn-glow" target="_blank" rel="noopener">
+                            <i class="fas fa-arrow-up-right-from-square"></i> Open Live Project
+                        </a>
+                        <button type="button" class="btn btn-outline" data-close-project>
+                            <i class="fas fa-xmark"></i> Close Window
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Contact -->
     <section id="contact" class="section fade-in-section">
